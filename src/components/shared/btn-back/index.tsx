@@ -1,16 +1,15 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-// import BtnBack from '../../components/shared/btn-back/index.tsx';
 
 const cx = classNames.bind(styles);
 
-const HomePage = () => {
+const BtnBack = () => {
   return (
     <div className={cx('wrapper')}>
-      <h2>HomePage</h2>
-      {/* <BtnBack /> */}
+      <button type="button" className={cx('wrapper__btn')}></button>
+      <h1 className={cx('wrapper__title')}>Назад</h1>
     </div>
   );
 };
 
-export default HomePage;
+export default BtnBack;
