@@ -9,6 +9,7 @@ const HomePage = () => {
     <div className={cx('wrapper')}>
       <Header />
       <h2>HomePage</h2>
+      <SiteBar />
     </div>
   );
 };
