@@ -40,7 +40,7 @@
       "@/libs/*": [
         "./src/libs/*"
       ],
-      "@/styles/*": [
+      "@/shared/styles/*": [
         "./src/shared/styles/*"
       ]
     }
