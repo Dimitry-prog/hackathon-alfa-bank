@@ -1,0 +1,35 @@
+@import "../../../shared/styles/styles";
+
+.header {
+  @include flex-between;
+  padding: 0 48px;
+
+  .header__menu {
+
+    .header__menu-list {
+      display: flex;
+      gap: 36px;
+
+      .header__menu-item {
+        @include text-btn-l;
+      }
+    }
+
+  }
+
+  .header__wrapper {
+    @include flex-center;
+    gap: 16px;
+
+
+    .header__alert {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: $color-grey-tertiary-btn;
+      background-image: url(icons/icon_btn.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import "../../../shared/styles/styles";
+
+.input-container {
+  background-color: $color-filed-grey-default;
+  min-width: 256px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+
+  .input-field {
+    background-color: $color-filed-grey-default;
+    @include text-btn-l;
+  }
+
+  .input-icon {
+    display: block;
+    background-image: url('icons/lupa.svg');
+    width: 24px;
+    height: 24px;
+  }
+}
