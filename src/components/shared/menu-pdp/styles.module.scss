@@ -1,6 +1,7 @@
-@import "../../../shared/styles/mixins";
-@import "../../../shared/styles/variables";
-.sitebar {
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
+
+.menu-pdp {
     @include flex-column;
 
     &__container-btn {
@@ -8,14 +9,12 @@
         align-items: center;
         margin-bottom: 40px;
         margin-top: 40px;
-        
-
     }
- 
+
     &__btn {
         width: 48px;
         height: 48px;
-        background-image: url("../../../../public/icons/btn-back.svg");
+        background-image: url("/icons/btn-back.svg");
         border: none;
         background-color: $color-white;
     }
@@ -28,20 +27,21 @@
         align-items: center;
         padding: 12px;
         margin-bottom: 4px;
-        
-        &:last-child{
-            margin-bottom: 0;  
+
+        &:last-child {
+            margin-bottom: 0;
         }
+    }
+    &__icons {
+        @include size-icon;
+        margin-right: 8px;
     }
     &__text {
         @include text-btn-s;
-        margin-left: 10px;
     }
 }
 /*взять стиль для активной страницы*/
-.active__gray{
+.active {
     background-color: $color-grey-tertiary-btn;
-        border-radius: $border-radius-m;
-
+    border-radius: $border-radius-m;
 }
-
