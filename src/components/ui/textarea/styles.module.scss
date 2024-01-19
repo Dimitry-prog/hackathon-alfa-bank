@@ -23,11 +23,16 @@
   resize: none;
 
   &::placeholder {
-    opacity: .7;
+    opacity: $opacity-s;
   }
 
   &:focus {
     background-color: $color-hover-link-brn;
+  }
+
+  &:disabled {
+    opacity: $opacity-m;
+    cursor: not-allowed;
   }
 
   &::-webkit-scrollbar {
@@ -45,6 +50,7 @@
 }
 
 .invalid {
+  color: $color-red;
   border: 1px solid $color-red;
 }
 

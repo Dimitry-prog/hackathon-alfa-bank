@@ -10,14 +10,14 @@ type TextareaProps = {
   className?: string;
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-const Textarea = ({ label, error, className = '', ...restProps }: TextareaProps) => {
+const Textarea = ({ label, error, className = '', disabled, ...restProps }: TextareaProps) => {
   const classes = cx('textarea', error && 'invalid', [className]);
 
   return (
     <div className={cx('wrapper')}>
       {label && <span className={cx('label')}>{label}</span>}
 
-      <textarea className={classes} {...restProps} />
+      <textarea className={classes} disabled={disabled} {...restProps} />
 
       {error && <span className={cx('error')}>{error}</span>}
     </div>
