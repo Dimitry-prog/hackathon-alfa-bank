@@ -21,7 +21,7 @@
 
 .label {
   @include text-typing-l;
-  width: min-content;
+  align-self: flex-start;
   color: $color-text;
 }
 
