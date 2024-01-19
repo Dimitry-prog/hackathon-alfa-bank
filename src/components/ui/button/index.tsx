@@ -8,8 +8,8 @@ type ButtonProps = {
   className: string;
 };
 
-const Button = ({ type }: ButtonProps) => {
-  return <button type={type}></button>;
+const Button = ({ type, children }: ButtonProps) => {
+  return <button type={type}>{children}</button>;
 };
 
 export default Button;
