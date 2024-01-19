@@ -32,6 +32,7 @@
   color: $color-black;
   border-radius: $border-radius-m;
   background-color: $color-filed-grey-default;
+  transition: $transition-m;
 
   &::placeholder {
     color: $color-text;
