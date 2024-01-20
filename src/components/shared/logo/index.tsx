@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 const Logo = () => {
   return (
     <div className={cx('logo')}>
-      <div className={cx('logo__image')}></div>
+      <img className={cx('logo__image')} src="/images/logo_image.svg" alt="Логотип" />
       <p className={cx('logo__text')}>Alfa People</p>
     </div>
   );

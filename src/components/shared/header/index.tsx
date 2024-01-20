@@ -1,33 +1,34 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import Logo from '@/components/shared/logo';
 import Avatar from '../avatar';
 import Input from '@/components/ui/input';
-import { useState } from 'react';
+import { headerLinks } from '@/libs/constants';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '@/components/shared/logo';
+import Notification from '../notification';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
-  const [value, setValue] = useState('');
+  const { pathname } = useLocation();
+
   return (
     <header className={cx('header')}>
       <Logo />
-      <menu className={cx('header__menu')}>
-        <ul className={cx('header__menu-list')}>
-          <li className={cx('header__menu-item')}>
-            <a href="#">Контакты</a>
-          </li>
-          <li className={cx('header__menu-item')}>
-            <a href="#">Всё о работе</a>
-          </li>
-          <li className={cx('header__menu-item')}>
-            <a href="#">Подразделения</a>
-          </li>
+      <nav className={cx('menu')}>
+        <ul className={cx('menu-list')}>
+          {headerLinks.map((link) => (
+            <li key={link.id}>
+              <Link to={link.href} className={cx('menu-item', pathname == link.href && 'active')}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-      </menu>
-      <div className={cx('header__wrapper')}>
-        <Input type={'text'} icon placeholder={'Поиск'} value={value} onChange={setValue} />
-        <div className={cx('header__alert')}></div>
+      </nav>
+      <div className={cx('wrapper')}>
+        <Input type={'text'} icon placeholder={'Поиск'} />
+        <Notification />
         <Avatar />
       </div>
     </header>
