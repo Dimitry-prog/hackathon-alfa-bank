@@ -1,19 +1,19 @@
-@import "../../../shared/styles/styles";
+@import "@/shared/styles/styles";
 
 .logo {
   display: flex;
   align-items: center;
   gap: 16px;
 
-  .logo__image {
-    background-image: url(images/logo_image.svg);
+  &__image {
     width: 48px;
     height: 48px;
+    border-radius: $border-radius-circle;
   }
 
-  .logo__text {
-    color: $color-black;
+  &__text {
     @include text-logo;
+    color: $color-black;
     letter-spacing: 0.72px;
   }
 }
