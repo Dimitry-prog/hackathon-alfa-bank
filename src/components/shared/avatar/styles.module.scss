@@ -1,6 +1,17 @@
+@import "@/shared/styles/styles";
 
 .avatar {
-  background-image: url(images/account.png);
+  border-radius: $border-radius-circle;
   width: 48px;
   height: 48px;
+}
+
+.s {
+  width: 48px;
+  height: 48px;
+}
+
+.m {
+  width: 100px;
+  height: 100px;
 }
