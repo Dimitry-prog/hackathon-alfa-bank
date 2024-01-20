@@ -9,6 +9,7 @@ const cx = classNames.bind(styles);
 
 const Footer = () => {
   const { pathname } = useLocation();
+
   return (
     <footer className={cx('footer')}>
       <div className={cx('container')}>
@@ -16,7 +17,10 @@ const Footer = () => {
           <ul className={cx('nav-list')}>
             {footerLinks.map((link) => (
               <li key={link.id} className={cx('item')}>
-                <Link to={link.href} className={cx('item-link', pathname && 'active')}>
+                <Link
+                  to={link.href}
+                  className={cx('item-link', pathname === link.href && 'active')}
+                >
                   {link.label}
                 </Link>
               </li>
@@ -34,7 +38,7 @@ const Footer = () => {
               <ul className={cx('list')}>
                 {socialLinks.map((link) => (
                   <li key={link.id} className={cx('element')}>
-                    <Link to={link.href} className={cx('link', pathname && 'active-link')}>
+                    <Link to={link.href} className={cx('link', pathname === link.href && 'active')}>
                       <img src={link.src} alt={link.label} className={cx('link-img')} />
                     </Link>
                   </li>
@@ -49,15 +53,9 @@ const Footer = () => {
           <p className={cx('help')}>011-1111 Help Desk | IT - поддержка</p>
           <p className={cx('help')}>013-3777 Human Help | IT - поддержка</p>
         </div>
-        {/* компонент Button пока в доработке */}
-        <Button
-          type="submit"
-          className="button"
-          children={undefined}
-          onClick={function (): void {
-            throw new Error('Function not implemented.');
-          }}
-        />
+        <Button type="submit" className={cx('button-help')} variant="secondary" size="s">
+          Помощь
+        </Button>
       </div>
     </footer>
   );

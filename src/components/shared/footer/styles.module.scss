@@ -73,6 +73,10 @@
   height: 40px;
 }
 
+.active {
+  opacity: $opacity-s;
+}
+
 .support {
   @include flex-between;
   padding: 0 48px;
@@ -88,4 +92,8 @@
 .help {
   @include text-typing-xs;
   color: $color-text;
+}
+
+.button-help {
+  min-width: 97px;
 }
