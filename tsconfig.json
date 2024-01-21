@@ -42,6 +42,12 @@
       ],
       "@/shared/styles/*": [
         "./src/shared/styles/*"
+      ],
+      "@/shared/slices/*": [
+        "./src/shared/slices/*"
+      ],
+      "@/shared/hooks/*": [
+        "./src/shared/hooks/*"
       ]
     }
   },
