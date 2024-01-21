@@ -1,24 +1,48 @@
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
-export const menuPdp = [
+export const roles = ['chief', 'employee'];
+
+export const sidebarMenuLinks = [
   {
-    id: '1',
-    label: 'Информация о развитии',
-    href: '/development-information',
-    imgSrc: 'icons/info-dev.svg',
+    role: 'chief',
+    links: [
+      {
+        id: '1',
+        label: 'Мой план развития',
+        href: '/my-development-plan',
+        imgSrc: 'icons/my-dev.svg',
+      },
+      {
+        id: '2',
+        label: 'Планы развития команды',
+        href: '/team-development-plans',
+        imgSrc: 'icons/komands-dev.svg',
+      },
+      {
+        id: '3',
+        label: 'Информация о развитии',
+        href: '/development-information',
+        imgSrc: 'icons/info-dev.svg',
+      },
+    ],
   },
   {
-    id: '2',
-    label: 'Мой план развития',
-    href: '/my-development-plan',
-    imgSrc: 'icons/my-dev.svg',
-  },
-  {
-    id: '3',
-    label: 'Планы развития команды',
-    href: '/team-development-plans',
-    imgSrc: 'icons/komands-dev.svg',
+    role: 'employee',
+    links: [
+      {
+        id: '1',
+        label: 'Мой план развития',
+        href: '/my-development-plan',
+        imgSrc: 'icons/my-dev.svg',
+      },
+      {
+        id: '2',
+        label: 'Информация о развитии',
+        href: '/development-information',
+        imgSrc: 'icons/info-dev.svg',
+      },
+    ],
   },
 ];
 
@@ -65,13 +89,13 @@ export const menu = [
     href: '/it-services',
     imgSrc: 'icons/it-services.svg',
   },
- ];
+];
 
 export const footerLinks = [
   {
     id: '1',
     label: 'Главная',
-    href: '/home',
+    href: '/',
   },
   {
     id: '2',
@@ -91,7 +115,7 @@ export const footerLinks = [
   {
     id: '5',
     label: 'Все о работе',
-    href: '/all_about_work',
+    href: '/all-about-work',
   },
   {
     id: '6',
@@ -106,22 +130,22 @@ export const footerLinks = [
   {
     id: '8',
     label: 'Заказ HR-услуг',
-    href: '/ordering_hr_services',
+    href: '/ordering-hr-services',
   },
   {
     id: '9',
     label: 'Заказ IT-услуг',
-    href: '/ordering_it_services',
+    href: '/ordering-it-services',
   },
   {
     id: '10',
     label: 'WSS Docs',
-    href: '/wss_docs',
+    href: '/wss-docs',
   },
   {
     id: '11',
     label: 'Карьера в банке',
-    href: '/banking_career',
+    href: '/banking-career',
   },
   {
     id: '12',
@@ -143,7 +167,7 @@ export const socialLinks = [
     href: 'https://vk.com/alfabank',
     src: vk,
   },
- ];
+];
 
 export const headerLinks = [
   {
@@ -154,14 +178,14 @@ export const headerLinks = [
   {
     id: '2',
     label: 'Всё о работе',
-    href: '/all_about_work',
+    href: '/all-about-work',
   },
   {
     id: '3',
     label: 'Подразделения',
     href: '/divisions',
   },
- ];
+];
 
 export const faqsMock = [
   {
