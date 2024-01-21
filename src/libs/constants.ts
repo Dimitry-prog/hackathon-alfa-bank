@@ -65,7 +65,7 @@ export const menu = [
     href: '/it-services',
     imgSrc: 'icons/it-services.svg',
   },
- ];
+];
 
 export const footerLinks = [
   {
@@ -143,7 +143,7 @@ export const socialLinks = [
     href: 'https://vk.com/alfabank',
     src: vk,
   },
- ];
+];
 
 export const headerLinks = [
   {
@@ -161,7 +161,7 @@ export const headerLinks = [
     label: 'Подразделения',
     href: '/divisions',
   },
- ];
+];
 
 export const faqsMock = [
   {
@@ -289,5 +289,26 @@ export const faqsMock = [
     id: '25',
     question: 'Что сотрудник может менять в задаче? ',
     answer: '',
+  },
+];
+
+export const tasks = [
+  {
+    id: '1',
+    pdp_id: 1,
+    description: 'Курсы Scrum-мастерcтва',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'В работе',
+  },
+  {
+    id: '1',
+    pdp_id: 1,
+    description: 'Курсы Scrum-мастерcтва',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'Заявка',
   },
 ];
