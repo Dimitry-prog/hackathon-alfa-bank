@@ -315,3 +315,24 @@ export const faqsMock = [
     answer: '',
   },
 ];
+
+export const tasks = [
+  {
+    id: '1',
+    pdp_id: 1,
+    description: 'Курсы Scrum-мастерcтва',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'В работе',
+  },
+  {
+    id: '1',
+    pdp_id: 1,
+    description: 'Курсы Scrum-мастерcтва',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'Заявка',
+  },
+];
