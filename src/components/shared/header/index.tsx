@@ -26,8 +26,9 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+
       <div className={cx('wrapper')}>
-        <Input type={'text'} icon placeholder={'Поиск'} />
+        <Input type="text" icon={<img src="/icons/lupa.svg" alt="поиск" />} placeholder="Поиск" />
         <Notification />
         <Avatar />
       </div>
