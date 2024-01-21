@@ -2,7 +2,7 @@
 
 .header {
   @include flex-between;
-  padding: 0 48px;
+  padding: 48px 48px 0;
 }
 
 .menu-list {

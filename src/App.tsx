@@ -1,19 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import classNames from 'classnames/bind';
-import styles from './App.module.scss';
 import HomePage from '@/pages/home';
-
-const cx = classNames.bind(styles);
+import Layout from '@/components/shared/layout';
 
 function App() {
   return (
-    <>
-      <main className={cx('main')}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </main>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+      </Route>
+    </Routes>
   );
 }
 

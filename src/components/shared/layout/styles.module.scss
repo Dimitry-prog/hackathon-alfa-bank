@@ -1,0 +1,13 @@
+@import "@/shared/styles/styles";
+
+.wrapper {
+  padding: 96px 48px 76px;
+  display: flex;
+  gap: 32px;
+  flex: 1 0 auto;
+}
+
+.main {
+  width: 100%;
+  flex: 1;
+}
