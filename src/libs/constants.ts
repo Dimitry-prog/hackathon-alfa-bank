@@ -316,6 +316,24 @@ export const faqsMock = [
   },
 ];
 
+export const directionOfDevelopmentMock = [
+  {
+    id: '1',
+    label: 'Система грейдов',
+    src: '/images/direction_1.svg',
+  },
+  {
+    id: '2',
+    label: 'Горизонтальное развитие',
+    src: '/images/direction_2.svg',
+  },
+  {
+    id: '3',
+    label: 'Перспективные направления',
+    src: '/images/direction_3.svg',
+  }
+];
+
 export const tasks = [
   {
     id: '1',
