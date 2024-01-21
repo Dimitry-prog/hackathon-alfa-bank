@@ -5,11 +5,19 @@ const cx = classNames.bind(styles);
 
 type AvatarProps = {
   size?: 's' | 'm';
-  href?: string;
+  src?: string;
 };
 
-const Avatar = ({ size = 's' }: AvatarProps) => {
-  return <img className={cx('avatar', size)} src="/images/account.png" alt="Фото сотрудника" />;
+const Avatar = ({ size = 's', src }: AvatarProps) => {
+  return (
+    <div className={cx('wrapper', size)}>
+      <img
+        src={src ? src : '/images/no_avatar.png'}
+        alt="аватар пользователя"
+        className={cx(size)}
+      />
+    </div>
+  );
 };
 
 export default Avatar;
