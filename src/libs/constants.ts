@@ -65,7 +65,7 @@ export const menu = [
     href: '/it-services',
     imgSrc: 'icons/it-services.svg',
   },
- ];
+];
 
 export const footerLinks = [
   {
@@ -143,7 +143,7 @@ export const socialLinks = [
     href: 'https://vk.com/alfabank',
     src: vk,
   },
- ];
+];
 
 export const headerLinks = [
   {
@@ -161,7 +161,7 @@ export const headerLinks = [
     label: 'Подразделения',
     href: '/divisions',
   },
- ];
+];
 
 export const faqsMock = [
   {
@@ -289,5 +289,23 @@ export const faqsMock = [
     id: '25',
     question: 'Что сотрудник может менять в задаче? ',
     answer: '',
+  },
+];
+
+export const directionOfDevelopmentMock = [
+  {
+    id: '1',
+    label: 'Система грейдов',
+    src: '/images/direction_1.svg',
+  },
+  {
+    id: '2',
+    label: 'Горизонтальное развитие',
+    src: '/images/direction_2.svg',
+  },
+  {
+    id: '3',
+    label: 'Перспективные направления',
+    src: '/images/direction_3.svg',
   },
 ];
