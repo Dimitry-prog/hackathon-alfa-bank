@@ -7,7 +7,7 @@ export const useScrollDisabled = (active: boolean) => {
       root.style.overflow = 'hidden';
     } else {
       const root = document.getElementById('root')!;
-      root.style.overflow = 'auto';
+      root.style.overflow = 'initial';
     }
   }, [active]);
 };

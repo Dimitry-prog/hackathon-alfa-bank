@@ -1,27 +1,18 @@
 @import "@/shared/styles/styles";
 
-.wrapper {
-  max-width: 884px;
-}
-
 .cards {
-  @include flex-between;
+  display: flex;
+  gap: 16px;
 }
 
 .card {
-  max-width: 434px;
-  min-height: 232px;
   width: 100%;
   padding: 32px;
   background-color: $color-black;
   color: $color-white;
   border-radius: $border-radius-l;
-  margin-top: 48px;
+  overflow: hidden;
   position: relative;
-}
-
-.title {
-  @include h1-title;
 }
 
 .heading {
