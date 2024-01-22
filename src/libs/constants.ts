@@ -331,13 +331,22 @@ export const directionOfDevelopmentMock = [
     id: '3',
     label: 'Перспективные направления',
     src: '/images/direction_3.svg',
-  }
+  },
 ];
 
 export const tasks = [
   {
     id: '1',
     pdp_id: 1,
+    description: 'Английский язык. Upper-Intermediate level',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'Исполнена',
+  },
+  {
+    id: '2',
+    pdp_id: 2,
     description: 'Курсы Scrum-мастерcтва',
     start_date: '01.01.24',
     deadline: '21.01.24',
@@ -345,12 +354,21 @@ export const tasks = [
     status: 'В работе',
   },
   {
-    id: '1',
-    pdp_id: 1,
-    description: 'Курсы Scrum-мастерcтва',
+    id: '3',
+    pdp_id: 3,
+    description: 'Бизнес-аналитика',
     start_date: '01.01.24',
     deadline: '21.01.24',
-    skills: 'Внешний курс',
+    skills: 'Менторство',
+    status: 'Отменена',
+  },
+  {
+    id: '4',
+    pdp_id: 4,
+    description: 'Работа в Jira',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внутренний курс',
     status: 'Заявка',
   },
 ];

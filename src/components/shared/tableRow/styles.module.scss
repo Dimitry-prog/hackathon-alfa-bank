@@ -30,6 +30,10 @@ table {
   content: "";
 }
 
+.min-width {
+  min-width: 24px;
+}
+
 .rows:hover {
   background-color: $color-hover-link-brn;
   border-top: 1px solid $color-divider;
