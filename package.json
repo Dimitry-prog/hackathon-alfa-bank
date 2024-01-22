@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@alfalab/core-components-button": "^11.1.1",
+    "@alfalab/core-components-calendar": "^7.3.1",
     "@alfalab/core-components-input": "^14.1.2",
     "@alfalab/core-components-spinner": "^3.2.0",
     "@hookform/resolvers": "^3.3.4",
