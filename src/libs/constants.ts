@@ -1,3 +1,4 @@
+import { title } from 'process';
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
@@ -348,7 +349,7 @@ export const directionOfDevelopmentMock = [
     id: '3',
     label: 'Перспективные направления',
     src: '/images/direction_3.svg',
-  }
+  },
 ];
 
 export const tasks = [
@@ -369,5 +370,32 @@ export const tasks = [
     deadline: '21.01.24',
     skills: 'Внешний курс',
     status: 'Заявка',
+  },
+];
+
+export const card = [
+  {
+    id: '1',
+    imgSrc: '/icons/my-plan.svg',
+    title: 'Свой план развития',
+    about: 'Чек-лист для начала карьерного роста',
+  },
+  {
+    id: '2',
+    imgSrc: '/icons/plan-employee.svg',
+    title: 'План развития сотрудника',
+    about: 'Как составить стратегию для команды',
+  },
+  {
+    id: '3',
+    imgSrc: '/icons/potential-tests.svg',
+    title: 'Тесты раскрытия потенциала',
+    about: 'Открой свои возможности для роста',
+  },
+  {
+    id: '4',
+    imgSrc: '/icons/successful-cases.svg',
+    title: 'Успешные кейсы',
+    about: 'Эффективные программы от опытных коллег',
   },
 ];
