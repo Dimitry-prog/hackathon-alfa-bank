@@ -1,9 +1,13 @@
 @import "@/shared/styles/styles";
 
-.avatar {
-  border-radius: $border-radius-circle;
+.wrapper {
   width: 48px;
   height: 48px;
+
+  & > img {
+    border-radius: $border-radius-circle;
+    object-fit: cover;
+  }
 }
 
 .s {
@@ -12,6 +16,6 @@
 }
 
 .m {
-  width: 100px;
-  height: 100px;
+  width: 64px;
+  height: 64px;
 }
