@@ -316,6 +316,23 @@ export const faqsMock = [
   },
 ];
 
+export const devInfoCards = [
+  {
+    id: '1',
+    label: 'План развития сотрудника',
+    text: 'Важность ИПР для карьерного и финансового роста',
+    href: '/employee_development_plan',
+    src: '/images/notepad.svg',
+  },
+  {
+    id: '2',
+    label: 'Цифровой профиль',
+    text: 'Заполните профиль и получите новый оффер',
+    href: '/digital_profile',
+    src: '/images/fugure.svg',
+  }
+];
+
 export const directionOfDevelopmentMock = [
   {
     id: '1',
