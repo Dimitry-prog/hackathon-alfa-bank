@@ -25,7 +25,7 @@
 @mixin h1-title {
   font-size: 30px;
   line-height: 36px;
-  letter-spacing: .6px;
+  letter-spacing: 0.6px;
   font-weight: 700;
 }
 
@@ -110,4 +110,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+
+@mixin size-image {
+  width: 48px;
+  height: 48px;
 }

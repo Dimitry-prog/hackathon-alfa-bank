@@ -1,3 +1,4 @@
+import { title } from 'process';
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
@@ -316,6 +317,23 @@ export const faqsMock = [
   },
 ];
 
+export const devInfoCards = [
+  {
+    id: '1',
+    label: 'План развития сотрудника',
+    text: 'Важность ИПР для карьерного и финансового роста',
+    href: '/employee_development_plan',
+    src: '/images/notepad.svg',
+  },
+  {
+    id: '2',
+    label: 'Цифровой профиль',
+    text: 'Заполните профиль и получите новый оффер',
+    href: '/digital_profile',
+    src: '/images/fugure.svg',
+  }
+];
+
 export const directionOfDevelopmentMock = [
   {
     id: '1',
@@ -370,5 +388,32 @@ export const tasks = [
     deadline: '21.01.24',
     skills: 'Внутренний курс',
     status: 'Заявка',
+  },
+];
+
+export const card = [
+  {
+    id: '1',
+    imgSrc: '/icons/my-plan.svg',
+    title: 'Свой план развития',
+    about: 'Чек-лист для начала карьерного роста',
+  },
+  {
+    id: '2',
+    imgSrc: '/icons/plan-employee.svg',
+    title: 'План развития сотрудника',
+    about: 'Как составить стратегию для команды',
+  },
+  {
+    id: '3',
+    imgSrc: '/icons/potential-tests.svg',
+    title: 'Тесты раскрытия потенциала',
+    about: 'Открой свои возможности для роста',
+  },
+  {
+    id: '4',
+    imgSrc: '/icons/successful-cases.svg',
+    title: 'Успешные кейсы',
+    about: 'Эффективные программы от опытных коллег',
   },
 ];

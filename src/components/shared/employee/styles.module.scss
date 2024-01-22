@@ -1,0 +1,44 @@
+@import "@/shared/styles/styles";
+
+.employee {
+    padding: 22px;
+    border-bottom: 1px solid $color-divider;
+
+    &__container {
+        display: grid;
+        grid-template-columns: 476px 160px 88px;
+        justify-content: space-around;
+        align-content: center;
+    }
+
+    &__data {
+        @include flex-center;
+    }
+
+    &__info {
+        margin-left: 20px;
+    }
+
+    &__avatar {
+        @include size-image;
+    }
+    &__name {
+        @include text-typing-l;
+        margin-bottom: 4px;
+    }
+    &__about {
+        @include text-typing-l;
+        color: $color-text;
+    }
+    &__condition {
+        @include flex-center;
+    }
+    &__icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+    }
+    &__text {
+        @include text-typing-s;
+    }
+}
