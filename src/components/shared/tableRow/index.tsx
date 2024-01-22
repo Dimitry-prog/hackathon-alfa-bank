@@ -11,7 +11,7 @@ const TableRow = () => {
     <table className={cx('table')}>
       <thead className={cx('table-head')}>
         <tr className={cx('heading')}>
-          <th className={cx('head-cell')}>№</th>
+          <th className={cx('head-cell', 'min-width')}>№</th>
           <th className={cx('head-cell')}>Название задачи</th>
           <th className={cx('head-cell')}>Начало</th>
           <th className={cx('head-cell')}>Окончание</th>
