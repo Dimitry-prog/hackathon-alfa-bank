@@ -65,7 +65,7 @@ export const menu = [
     href: '/it-services',
     imgSrc: 'icons/it-services.svg',
   },
- ];
+];
 
 export const footerLinks = [
   {
@@ -143,7 +143,7 @@ export const socialLinks = [
     href: 'https://vk.com/alfabank',
     src: vk,
   },
- ];
+];
 
 export const headerLinks = [
   {
@@ -161,7 +161,7 @@ export const headerLinks = [
     label: 'Подразделения',
     href: '/divisions',
   },
- ];
+];
 
 export const faqsMock = [
   {
@@ -289,5 +289,22 @@ export const faqsMock = [
     id: '25',
     question: 'Что сотрудник может менять в задаче? ',
     answer: '',
+  },
+];
+
+export const devInfoCards = [
+  {
+    id: '1',
+    label: 'План развития сотрудника',
+    text: 'Важность ИПР для карьерного и финансового роста',
+    href: '/employee_development_plan',
+    src: '/images/notepad.svg',
+  },
+  {
+    id: '2',
+    label: 'Цифровой профиль',
+    text: 'Заполните профиль и получите новый оффер',
+    href: '/digital_profile',
+    src: '/images/fugure.svg',
   },
 ];
