@@ -3,6 +3,7 @@ import HomePage from '@/pages/home';
 import Layout from '@/components/shared/layout';
 import DevelopmentInfoPage from '@/pages/development-information';
 
+
 function App() {
   return (
     <Routes>
