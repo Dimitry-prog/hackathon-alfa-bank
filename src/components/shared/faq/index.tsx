@@ -17,7 +17,7 @@ const Faq = () => {
   };
 
   return (
-    <div className={cx('wrapper')}>
+    <section className={cx('wrapper')}>
       <h2>Часто задаваемые вопросы</h2>
 
       {faqsMock.map((faq) => {
@@ -33,7 +33,7 @@ const Faq = () => {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 };
 

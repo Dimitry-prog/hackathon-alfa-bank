@@ -7,8 +7,9 @@ const cx = classNames.bind(styles);
 
 const RecommendationPdp = () => {
   return (
-    <div className={cx('recommendation-pdp')}>
+    <section className={cx('recommendation-pdp')}>
       <h2 className={cx('recommendation-pdp__title')}>Рекомендации по составлению ИПР</h2>
+
       <nav>
         <ul className={cx('cards')}>
           {card.map((list) => (
@@ -20,7 +21,7 @@ const RecommendationPdp = () => {
           ))}
         </ul>
       </nav>
-    </div>
+    </section>
   );
 };
 

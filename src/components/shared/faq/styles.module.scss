@@ -1,8 +1,7 @@
 @import "@/shared/styles/styles";
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
 
   & > h2 {
     @include h1-title;
