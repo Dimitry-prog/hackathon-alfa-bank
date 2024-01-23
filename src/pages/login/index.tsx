@@ -9,7 +9,7 @@ import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import { useAppDispatch } from '@/libs/store.ts';
 import { userActions } from '@/features/user/slices';
-import { UserRole } from '@/features/user/types';
+import { UserRoleType } from '@/features/user/types';
 
 const cx = classNames.bind(styles);
 
@@ -34,8 +34,21 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<LoginFormDataType> = async (data) => {
     console.log(data);
+    const user = {
+      first_name: data.name,
+      role: data.role.value as UserRoleType,
+      id: '2235',
+      last_name: '',
+      patronymic_name: '',
+      password: '',
+      position: '',
+      photo: '',
+      email: '',
+      chief_id: '780',
+    };
     dispatch(userActions.setToken('sdgsdrr'));
-    dispatch(userActions.setUserRole(data.role.value as UserRole));
+    dispatch(userActions.setUserRole(data.role.value as UserRoleType));
+    dispatch(userActions.setUser(user));
     navigate('/');
   };
 

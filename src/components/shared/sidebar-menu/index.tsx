@@ -1,22 +1,31 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { sidebarMenuLinks } from '@/libs/constants.ts';
+import { UserRoleType } from '@/features/user/types';
 
 const cx = classNames.bind(styles);
 
 type SidebarMenuProps = {
-  role: 'chief' | 'employee';
+  role: UserRoleType;
 };
 
 const SidebarMenu = ({ role }: SidebarMenuProps) => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   return (
     <aside className={cx('wrapper')}>
-      <button type="button" className={cx('back')} aria-label="вернуться назад">
-        Назад
-      </button>
+      {pathname !== '/' && (
+        <button
+          onClick={() => navigate(-1)}
+          type="button"
+          className={cx('back')}
+          aria-label="вернуться назад"
+        >
+          Назад
+        </button>
+      )}
 
       <nav>
         <ul className={cx('list')}>
