@@ -330,7 +330,7 @@ export const devInfoCards = [
     text: 'Заполните профиль и получите новый оффер',
     href: '/digital_profile',
     src: '/images/fugure.svg',
-  }
+  },
 ];
 
 export const directionOfDevelopmentMock = [
@@ -348,13 +348,22 @@ export const directionOfDevelopmentMock = [
     id: '3',
     label: 'Перспективные направления',
     src: '/images/direction_3.svg',
-  }
+  },
 ];
 
 export const tasks = [
   {
     id: '1',
     pdp_id: 1,
+    description: 'Английский язык. Upper-Intermediate level',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внешний курс',
+    status: 'Исполнена',
+  },
+  {
+    id: '2',
+    pdp_id: 2,
     description: 'Курсы Scrum-мастерcтва',
     start_date: '01.01.24',
     deadline: '21.01.24',
@@ -362,12 +371,60 @@ export const tasks = [
     status: 'В работе',
   },
   {
-    id: '1',
-    pdp_id: 1,
-    description: 'Курсы Scrum-мастерcтва',
+    id: '3',
+    pdp_id: 3,
+    description: 'Бизнес-аналитика',
     start_date: '01.01.24',
     deadline: '21.01.24',
-    skills: 'Внешний курс',
+    skills: 'Менторство',
+    status: 'Отменена',
+  },
+  {
+    id: '4',
+    pdp_id: 4,
+    description: 'Работа в Jira',
+    start_date: '01.01.24',
+    deadline: '21.01.24',
+    skills: 'Внутренний курс',
     status: 'Заявка',
+  },
+];
+
+export const card = [
+  {
+    id: '1',
+    imgSrc: '/icons/my-plan.svg',
+    title: 'Свой план развития',
+    about: 'Чек-лист для начала карьерного роста',
+  },
+  {
+    id: '2',
+    imgSrc: '/icons/plan-employee.svg',
+    title: 'План развития сотрудника',
+    about: 'Как составить стратегию для команды',
+  },
+  {
+    id: '3',
+    imgSrc: '/icons/potential-tests.svg',
+    title: 'Тесты раскрытия потенциала',
+    about: 'Открой свои возможности для роста',
+  },
+  {
+    id: '4',
+    imgSrc: '/icons/successful-cases.svg',
+    title: 'Успешные кейсы',
+    about: 'Эффективные программы от опытных коллег',
+  },
+];
+
+export const employeeList = [
+  {
+    id: '1',
+    imgSrc: '/images/foto-employee.png',
+    name: 'Константинов-Полонский-Георгиевский Владимир Владиславович',
+    position: 'Frontend-разработчик',
+    icon: '/icons/no-pdp.svg',
+    status: 'нет ИПР',
+    data: 'нет',
   },
 ];

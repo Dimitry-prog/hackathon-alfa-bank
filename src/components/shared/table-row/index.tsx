@@ -11,7 +11,7 @@ const TableRow = () => {
     <table className={cx('table')}>
       <thead className={cx('table-head')}>
         <tr className={cx('heading')}>
-          <th className={cx('head-cell')}>№</th>
+          <th className={cx('head-cell', 'min-width')}>№</th>
           <th className={cx('head-cell')}>Название задачи</th>
           <th className={cx('head-cell')}>Начало</th>
           <th className={cx('head-cell')}>Окончание</th>
@@ -28,7 +28,7 @@ const TableRow = () => {
             <td className={cx('row')}>{task.deadline}</td>
             <td className={cx('row')}>{task.skills}</td>
             <td className={cx('row')}>
-              <Link to="#" className={cx('link', selectStatus(task.status))}>
+              <Link to="/edit_task" className={cx('link', selectStatus(task.status))}>
                 {task.status}
               </Link>
             </td>

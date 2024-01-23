@@ -8,7 +8,6 @@ const cx = classNames.bind(styles);
 const DevInfo = () => {
   return (
     <section className={cx('wrapper')}>
-      <h1 className={cx('title')}>Информация о развитии</h1>
       <ul className={cx('cards')}>
         {devInfoCards.map((card) => (
           <li className={cx('card')} key={card.id}>
@@ -18,7 +17,7 @@ const DevInfo = () => {
               type="button"
               className={cx('button')}
               variant="accent"
-              size="m"
+              size="l"
               href="/employee_development_plan"
             >
               Подробнее
