@@ -416,3 +416,15 @@ export const card = [
     about: 'Эффективные программы от опытных коллег',
   },
 ];
+
+export const employeeList = [
+  {
+    id: '1',
+    imgSrc: '/images/foto-employee.png',
+    name: 'Константинов-Полонский-Георгиевский Владимир Владиславович',
+    position: 'Frontend-разработчик',
+    icon: '/icons/no-pdp.svg',
+    status: 'нет ИПР',
+    data: 'нет',
+  },
+];
