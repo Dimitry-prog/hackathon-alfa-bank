@@ -1,0 +1,20 @@
+@import "@/shared/styles/styles";
+
+.wrapper {
+  @include flex-column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.title {
+  padding-bottom: 8px;
+}
+
+.heading {
+  @include h2-title;
+  letter-spacing: 0.6px;
+}
+
+.button {
+  margin-bottom: 36px;
+}
