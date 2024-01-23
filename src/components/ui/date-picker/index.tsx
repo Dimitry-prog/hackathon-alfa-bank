@@ -9,21 +9,39 @@ import { formattedDate } from '@/libs/utils.ts';
 const cx = classNames.bind(styles);
 
 type DatePickerProps = {
+  value: number;
+  onChange: (...event: unknown[]) => void;
   disabled?: boolean;
   label?: string;
   placeholder?: string;
   error?: string;
   className?: string;
-  field: ControllerRenderProps;
+  field?: ControllerRenderProps<{
+    title: string;
+    start_date: number;
+    deadline: number;
+    type: {
+      id: string;
+      value: string;
+    };
+    status: {
+      id: string;
+      value: string;
+    };
+    description: string;
+    skills: string;
+    comment: string;
+  }>;
 };
 
 const DatePicker = ({
   disabled = false,
   label,
+  value,
+  onChange,
   error,
   placeholder = '',
   className,
-  field,
 }: DatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [date, setDate] = useState(placeholder);
@@ -31,8 +49,8 @@ const DatePicker = ({
 
   const handleOptionClick = () => {
     setIsOpen(false);
-    if (field.value) {
-      setDate(formattedDate(field.value));
+    if (value) {
+      setDate(formattedDate(value as number));
     }
   };
 
@@ -43,7 +61,7 @@ const DatePicker = ({
 
   useEffect(() => {
     handleOptionClick();
-  }, [field.value]);
+  }, [value]);
 
   const triggerEl = (
     <button
@@ -66,10 +84,10 @@ const DatePicker = ({
 
       <Dropdown trigger={triggerEl} isOpen={isOpen} onClose={handleToggleOpen}>
         <Calendar
-          value={field.value}
+          value={value as number}
           open={isOpen}
           responsive
-          onChange={field.onChange}
+          onChange={onChange}
           className={classes}
         />
       </Dropdown>

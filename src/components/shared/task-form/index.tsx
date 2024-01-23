@@ -81,7 +81,8 @@ const TaskForm = () => {
           control={control}
           render={({ field }) => (
             <DatePicker
-              field={field}
+              value={field.value}
+              onChange={field.onChange}
               label="Дата начала"
               placeholder="Выберите дату"
               error={errors.start_date?.message}
@@ -94,7 +95,8 @@ const TaskForm = () => {
           control={control}
           render={({ field }) => (
             <DatePicker
-              field={field}
+              value={field.value}
+              onChange={field.onChange}
               label="Дата окончания"
               placeholder="Выберите дату"
               error={errors.deadline?.message}
