@@ -12,3 +12,14 @@ export type UserType = {
   password: string;
   chief_id: string;
 };
+
+export type UserTaskType = {
+  title: string;
+  start_date: number;
+  deadline: number;
+  type: string;
+  status: string;
+  description: string;
+  skills: string;
+  comment: string;
+};

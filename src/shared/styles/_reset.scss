@@ -1,3 +1,5 @@
+@import "variables";
+
 *,
 ::after,
 ::before {
@@ -20,13 +22,23 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+  font-family: $font-family-main;
 }
 
 input, button, textarea {
   outline: none;
   border: 1px solid transparent;
+  font-family: $font-family-main;
+}
+
+input, textarea {
+  
+  &::placeholder {
+    font-family: $font-family-main;
+  }
 }
 
 button {
   cursor: pointer;
 }
+

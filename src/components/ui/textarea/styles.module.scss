@@ -25,6 +25,7 @@
 
   &::placeholder {
     opacity: $opacity-s;
+    font-family: 'Roboto', sans-serif;
   }
 
   &:focus {

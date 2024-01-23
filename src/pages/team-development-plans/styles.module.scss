@@ -1,8 +1,0 @@
-@import "@/shared/styles/styles";
-
-.team{
-    &__title{
-        @include h1-title;
-        margin-bottom: 40px;
-    }
-}
