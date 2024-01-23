@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from '@/pages/home';
 import Layout from '@/components/shared/layout';
 import DevelopmentInfoPage from '@/pages/development-information';
+import CreateIpr from './pages/create-ipr';
 
 
 function App() {
