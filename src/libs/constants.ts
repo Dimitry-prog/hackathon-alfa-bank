@@ -1,4 +1,3 @@
-import { title } from 'process';
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
@@ -331,7 +330,7 @@ export const devInfoCards = [
     text: 'Заполните профиль и получите новый оффер',
     href: '/digital_profile',
     src: '/images/fugure.svg',
-  }
+  },
 ];
 
 export const directionOfDevelopmentMock = [
