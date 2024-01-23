@@ -10,6 +10,13 @@
   padding-bottom: 8px;
 }
 
+.container {
+  @include flex-row;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
 .button {
   margin-bottom: 36px;
 }

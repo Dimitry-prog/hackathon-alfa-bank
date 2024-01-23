@@ -28,7 +28,7 @@ const TableRow = () => {
             <td className={cx('row')}>{task.deadline}</td>
             <td className={cx('row')}>{task.skills}</td>
             <td className={cx('row')}>
-              <Link to="#" className={cx('link', selectStatus(task.status))}>
+              <Link to="/edit_task" className={cx('link', selectStatus(task.status))}>
                 {task.status}
               </Link>
             </td>

@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from '@/pages/home';
 import Layout from '@/components/shared/layout';
 
-
 function App() {
   return (
     <Routes>
