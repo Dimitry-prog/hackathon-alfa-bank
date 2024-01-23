@@ -1,4 +1,3 @@
-// import { title } from 'process';
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
