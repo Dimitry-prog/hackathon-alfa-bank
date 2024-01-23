@@ -1,0 +1,21 @@
+@import "@/shared/styles/styles";
+
+.wrapper {
+  max-width: 600px;
+  width: 100%;
+  padding: 150px 10px 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & > button[type='submit'] {
+    margin-top: 60px;
+  }
+}
