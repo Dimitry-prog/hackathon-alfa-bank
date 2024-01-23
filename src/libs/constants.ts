@@ -1,4 +1,4 @@
-import { title } from 'process';
+// import { title } from 'process';
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
@@ -331,7 +331,7 @@ export const devInfoCards = [
     text: 'Заполните профиль и получите новый оффер',
     href: '/digital_profile',
     src: '/images/fugure.svg',
-  }
+  },
 ];
 
 export const directionOfDevelopmentMock = [
@@ -415,5 +415,17 @@ export const card = [
     imgSrc: '/icons/successful-cases.svg',
     title: 'Успешные кейсы',
     about: 'Эффективные программы от опытных коллег',
+  },
+];
+
+export const employeeList = [
+  {
+    id: '1',
+    imgSrc: '/images/foto-employee.png',
+    name: 'Константинов-Полонский-Георгиевский Владимир Владиславович',
+    position: 'Frontend-разработчик',
+    icon: '/icons/no-pdp.svg',
+    status: 'нет ИПР',
+    data: 'нет',
   },
 ];

@@ -12,7 +12,7 @@ const Layout = () => {
     <>
       <Header />
       <div className={cx('wrapper')}>
-        <SidebarMenu role="employee" />
+        <SidebarMenu role="chief" />
 
         <main className={cx('main')}>
           <Outlet />

@@ -1,36 +1,41 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
+type EmployeeProps = {
+  key: string;
+  imgSrc: string;
+  name: string;
+  position: string;
+  icon: string;
+  status: string;
+  data: string;
+};
 
-const Employee = () => {
+const Employee = ({ key, imgSrc, name, position, icon, status, data }: EmployeeProps) => {
   return (
-    <div className={cx('employee')}>
+    <li key={key} className={cx('employee')}>
       <div className={cx('employee__container')}>
         <div className={cx('employee__data')}>
-          <img
-            className={cx('employee__avatar')}
-            src="/images/foto-employee.png"
-            alt="Фото сотрудника"
-          />
+          <img className={cx('employee__avatar')} src={imgSrc} alt={name} />
           <div className={cx('employee__info')}>
-            <h4 className={cx('employee__name')}>
-              Константинов-Полонский-Георгиевский Владимир Владиславович
-            </h4>
-            <p className={cx('employee__about')}>Frontend-разработчик</p>
+            <h4 className={cx('employee__name')}>{name}</h4>
+            <p className={cx('employee__position')}>{position}</p>
           </div>
         </div>
         <div className={cx('employee__condition')}>
           <div>
-            <img className={cx('employee__icon')} src="/icons/no-pdp.svg" alt="нет ИПР" />
-            <p className={cx('employee__text')}>нет ИПР</p>
+            <img className={cx('employee__icon')} src={icon} alt={status} />
+            <p className={cx('employee__text')}>{status}</p>
           </div>
         </div>
         <div className={cx('employee__condition')}>
-          <p className={cx('employee__text')}>нет</p>
+          <p className={cx('employee__text')}>{data}</p>
         </div>
+        <Link to="/development-information" className={cx('employee__link')} />
       </div>
-    </div>
+    </li>
   );
 };
 
