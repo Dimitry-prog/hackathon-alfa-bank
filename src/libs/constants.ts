@@ -1,7 +1,7 @@
 import telegram from '/icons/telegram.svg';
 import vk from '/icons/vk.svg';
 
-export const roles = ['chief', 'employee'];
+export const roles = ['chief', 'single-employee'];
 
 export const sidebarMenuLinks = [
   {
@@ -10,19 +10,19 @@ export const sidebarMenuLinks = [
       {
         id: '1',
         label: 'Мой план развития',
-        href: '/my-development-plan',
+        href: '/my-plan',
         imgSrc: 'icons/my-dev.svg',
       },
       {
         id: '2',
         label: 'Планы развития команды',
-        href: '/team-development-plans',
+        href: '/',
         imgSrc: 'icons/komands-dev.svg',
       },
       {
         id: '3',
         label: 'Информация о развитии',
-        href: '/development-information',
+        href: '/info',
         imgSrc: 'icons/info-dev.svg',
       },
     ],
@@ -33,20 +33,20 @@ export const sidebarMenuLinks = [
       {
         id: '1',
         label: 'Мой план развития',
-        href: '/my-development-plan',
+        href: '/',
         imgSrc: 'icons/my-dev.svg',
       },
       {
         id: '2',
         label: 'Информация о развитии',
-        href: '/development-information',
+        href: '/info',
         imgSrc: 'icons/info-dev.svg',
       },
     ],
   },
 ];
 
-export const menu = [
+export const alfaSidebarMenuLinks = [
   {
     id: '1',
     label: 'Личные данные',
@@ -333,7 +333,7 @@ export const devInfoCards = [
   },
 ];
 
-export const directionOfDevelopmentMock = [
+export const devDirectionMock = [
   {
     id: '1',
     label: 'Система грейдов',
@@ -399,7 +399,7 @@ export const card = [
   },
   {
     id: '2',
-    imgSrc: '/icons/plan-employee.svg',
+    imgSrc: '/icons/plan-single-employee.svg',
     title: 'План развития сотрудника',
     about: 'Как составить стратегию для команды',
   },
@@ -426,5 +426,51 @@ export const employeeList = [
     icon: '/icons/no-pdp.svg',
     status: 'нет ИПР',
     data: 'нет',
+  },
+];
+
+export const typesTaskMock = [
+  {
+    id: '1',
+    value: 'Самостоятельное обучение',
+  },
+  {
+    id: '2',
+    value: 'Внутренний курс',
+  },
+  {
+    id: '3',
+    value: 'Внешний курс',
+  },
+  {
+    id: '4',
+    value: 'Наставничество',
+  },
+  {
+    id: '5',
+    value: 'Менторство',
+  },
+];
+
+export const statusTaskMock = [
+  {
+    id: '1',
+    value: 'Заявка',
+  },
+  {
+    id: '2',
+    value: 'В работе',
+  },
+  {
+    id: '3',
+    value: 'Исполнена',
+  },
+  {
+    id: '4',
+    value: 'Отменена',
+  },
+  {
+    id: '5',
+    value: 'Хорошо',
   },
 ];
