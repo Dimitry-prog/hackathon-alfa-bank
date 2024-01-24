@@ -1,18 +1,20 @@
 import { z } from 'zod';
 
-const time = new Date().getTime();
+// const time = new Date().getTime();
 export const taskFormSchema = z.object({
   title: z.string().min(1, { message: 'Название слишком короткое' }),
-  start_date: z.coerce
-    .number({
-      invalid_type_error: 'Заполните поле',
-    })
-    .min(time, { message: 'Дата не может быть в прошлом' }),
-  deadline: z.coerce
-    .number({
-      invalid_type_error: 'Заполните поле',
-    })
-    .min(time, { message: 'Дата не может быть в прошлом' }),
+  start_date: z.string(),
+  deadline: z.string(),
+  // start_date: z.coerce
+  //   .number({
+  //     invalid_type_error: 'Заполните поле',
+  //   })
+  //   .min(time, { message: 'Дата не может быть в прошлом' }),
+  // deadline: z.coerce
+  //   .number({
+  //     invalid_type_error: 'Заполните поле',
+  //   })
+  //   .min(time, { message: 'Дата не может быть в прошлом' }),
   type: z.object({
     value: z.string().min(1, { message: 'Выберите тип задачи' }),
     id: z.string().min(1, { message: 'Выберите тип задачи' }),

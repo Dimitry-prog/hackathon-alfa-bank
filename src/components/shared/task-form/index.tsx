@@ -6,7 +6,6 @@ import Textarea from '@/components/ui/textarea';
 import Button from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TaskFormDataType, taskFormSchema } from '@/components/shared/task-form/validation';
-import DatePicker from '@/components/ui/date-picker';
 import Select from '@/components/ui/select';
 import { statusTaskMock, typesTaskMock } from '@/libs/constants.ts';
 import { useNavigate } from 'react-router-dom';
@@ -27,8 +26,8 @@ const TaskForm = () => {
   } = useForm<TaskFormDataType>({
     defaultValues: {
       title: '',
-      start_date: undefined,
-      deadline: undefined,
+      start_date: '',
+      deadline: '',
       type: {
         id: '',
         value: '',
@@ -80,11 +79,11 @@ const TaskForm = () => {
           name="start_date"
           control={control}
           render={({ field }) => (
-            <DatePicker
-              value={field.value}
-              onChange={field.onChange}
+            <Input
+              type="date"
               label="Дата начала"
               placeholder="Выберите дату"
+              {...field}
               error={errors.start_date?.message}
             />
           )}
@@ -94,12 +93,12 @@ const TaskForm = () => {
           name="deadline"
           control={control}
           render={({ field }) => (
-            <DatePicker
-              value={field.value}
-              onChange={field.onChange}
+            <Input
+              type="date"
               label="Дата окончания"
               placeholder="Выберите дату"
-              error={errors.deadline?.message}
+              {...field}
+              error={errors.start_date?.message}
             />
           )}
         />
