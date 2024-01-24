@@ -11,6 +11,7 @@ import { statusTaskMock, typesTaskMock } from '@/libs/constants.ts';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/libs/store.ts';
 import { userActions } from '@/features/user/slices';
+import DatePicker from '@/components/ui/date-picker';
 
 const cx = classNames.bind(styles);
 
@@ -26,8 +27,8 @@ const TaskForm = () => {
   } = useForm<TaskFormDataType>({
     defaultValues: {
       title: '',
-      start_date: '',
-      deadline: '',
+      start_date: undefined,
+      deadline: undefined,
       type: {
         id: '',
         value: '',
@@ -79,11 +80,11 @@ const TaskForm = () => {
           name="start_date"
           control={control}
           render={({ field }) => (
-            <Input
-              type="date"
+            <DatePicker
+              value={field.value}
+              onChange={field.onChange}
               label="Дата начала"
               placeholder="Выберите дату"
-              {...field}
               error={errors.start_date?.message}
             />
           )}
@@ -93,12 +94,12 @@ const TaskForm = () => {
           name="deadline"
           control={control}
           render={({ field }) => (
-            <Input
-              type="date"
+            <DatePicker
+              value={field.value}
+              onChange={field.onChange}
               label="Дата окончания"
               placeholder="Выберите дату"
-              {...field}
-              error={errors.start_date?.message}
+              error={errors.deadline?.message}
             />
           )}
         />

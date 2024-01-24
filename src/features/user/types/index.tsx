@@ -15,8 +15,8 @@ export type UserType = {
 
 export type UserTaskType = {
   title: string;
-  start_date: string;
-  deadline: string;
+  start_date: number;
+  deadline: number;
   type: string;
   status: string;
   description: string;
