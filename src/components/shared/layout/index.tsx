@@ -13,9 +13,9 @@ const Layout = () => {
   const { role } = useUserInfo();
 
   return (
-    <>
+    <div className={cx('wrapper')}>
       <Header />
-      <div className={cx('wrapper')}>
+      <div className={cx('container')}>
         <SidebarMenu role={role as UserRoleType} />
 
         <main className={cx('main')}>
@@ -23,7 +23,7 @@ const Layout = () => {
         </main>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

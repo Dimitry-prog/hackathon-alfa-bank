@@ -1,21 +1,23 @@
 @import "@/shared/styles/styles";
 
 .wrapper {
-  max-width: 600px;
+  @include flex-column;
   width: 100%;
-  padding: 150px 10px 0;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  height: 100vh;
+  background-image: url('/images/logo-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & > header {
+    padding: 48px;
+  }
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  & > button[type='submit'] {
-    margin-top: 60px;
-  }
+.content {
+  @include flex-column;
+  @include flex-center;
+  width: 100%;
+  padding: 15px;
+  margin: 0 auto;
+  flex: 1;
 }
