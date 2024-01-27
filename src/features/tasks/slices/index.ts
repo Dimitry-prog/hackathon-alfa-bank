@@ -2,19 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TaskType } from '../type';
 
 interface TaskState {
-  tasks: TaskType[];
+  task: TaskType[];
 }
 
 const initialState: TaskState = {
-  tasks: [],
+  task: [],
 };
 
 export const taskSlice = createSlice({
-  name: 'tasks',
+  name: 'task',
   initialState,
   reducers: {
     setTasks: (state, action: PayloadAction<TaskType[]>) => {
-      state.tasks = action.payload;
+      state.task = action.payload;
     },
   },
   selectors: {
