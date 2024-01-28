@@ -4,8 +4,9 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { api } from './api.ts';
 import { modalSlice } from '@/shared/slices/modal-slice.ts';
 import { userSlice } from '@/features/user/slices';
+import { authSlice } from '@/features/auth/slices';
 
-const rootReducer = combineSlices(api, modalSlice, userSlice);
+const rootReducer = combineSlices(api, authSlice, userSlice, modalSlice);
 
 const store = configureStore({
   reducer: rootReducer,

@@ -12,7 +12,7 @@
   border-radius: $border-radius-m;
   background-color: $color-white;
   box-shadow: $box-shadow-m;
-  transition: $transition-m;
+  transition: $transition-s;
   overflow-y: auto;
   visibility: hidden;
   opacity: 0;
@@ -21,7 +21,7 @@
 }
 
 .open {
-  transition: $transition-m;
+  transition: $transition-s;
   visibility: visible;
   opacity: 1;
 }

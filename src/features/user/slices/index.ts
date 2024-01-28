@@ -10,18 +10,7 @@ type UserStateType = {
 };
 
 const initialState: UserStateType = {
-  user: {
-    id: '2235',
-    last_name: '',
-    first_name: '',
-    patronymic_name: '',
-    role: 'employee',
-    password: '',
-    position: '',
-    photo: '',
-    email: '',
-    chief_id: '780',
-  },
+  user: null,
   userTask: null,
   name: '',
   token: null,

@@ -9,8 +9,9 @@ export type UserType = {
   role: UserRoleType;
   photo: string;
   email: string;
-  password: string;
-  chief_id: string;
+  is_active: boolean;
+  is_superuser: boolean;
+  is_verified: boolean;
 };
 
 export type UserTaskType = {

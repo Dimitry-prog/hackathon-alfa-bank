@@ -474,3 +474,16 @@ export const statusTaskMock = [
     value: 'Хорошо',
   },
 ];
+
+export const loginFooterLinks = [
+  {
+    id: '1',
+    href: '/login/help',
+    label: 'Help Desk',
+  },
+  {
+    id: '2',
+    href: '/login/help',
+    label: 'Мобильное приложение',
+  },
+];
