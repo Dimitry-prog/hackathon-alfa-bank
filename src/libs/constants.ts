@@ -25,6 +25,12 @@ export const sidebarMenuLinks = [
         href: '/info',
         imgSrc: 'icons/info-dev.svg',
       },
+      {
+        id: '4',
+        label: 'Конструктор ИПР',
+        href: '/template',
+        imgSrc: 'icons/template.svg',
+      },
     ],
   },
   {
