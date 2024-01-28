@@ -1,0 +1,33 @@
+@import "@/shared/styles/styles";
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  appearance: none;
+  background-color: black;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox:checked::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url('../../../../public/icons/checkbox.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
