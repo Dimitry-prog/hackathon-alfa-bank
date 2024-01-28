@@ -1,5 +1,4 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import Input from '@/components/ui/input';
 import Select from '@/components/ui/select';
 import Button from '@/components/ui/button';
 import classNames from 'classnames/bind';
@@ -26,7 +25,6 @@ const LoginForm = () => {
     control,
   } = useForm<LoginFormDataType>({
     defaultValues: {
-      name: '',
       role: {
         id: '',
         value: '',
@@ -38,7 +36,7 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<LoginFormDataType> = async (data) => {
     console.log(data);
     const user = {
-      first_name: data.name,
+      first_name: 'fdhfgf',
       role: data.role.value as UserRoleType,
       id: '2235',
       last_name: '',
@@ -59,20 +57,6 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cx('form')}>
       <h2>Представьтесь и входите скорее</h2>
-
-      <Controller
-        name="name"
-        control={control}
-        render={({ field }) => (
-          <Input
-            label="Имя"
-            placeholder="Введите имя"
-            onChange={field.onChange}
-            value={field.value}
-            error={errors.name?.message}
-          />
-        )}
-      />
 
       <Controller
         name="role"
