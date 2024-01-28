@@ -99,53 +99,53 @@ export const footerLinks = [
   },
   {
     id: '2',
-    label: 'Сервисы',
-    href: '/services',
-  },
-  {
-    id: '3',
-    label: 'Контакты',
-    href: '/сontacts',
-  },
-  {
-    id: '4',
     label: 'Подразделения',
     href: '/divisions',
   },
   {
-    id: '5',
-    label: 'Все о работе',
-    href: '/all-about-work',
-  },
-  {
-    id: '6',
-    label: 'Академия',
-    href: '/academy',
-  },
-  {
-    id: '7',
+    id: '3',
     label: 'SAP АХД',
     href: '/sap_ahd',
   },
   {
-    id: '8',
-    label: 'Заказ HR-услуг',
-    href: '/ordering-hr-services',
-  },
-  {
-    id: '9',
-    label: 'Заказ IT-услуг',
-    href: '/ordering-it-services',
-  },
-  {
-    id: '10',
+    id: '4',
     label: 'WSS Docs',
     href: '/wss-docs',
   },
   {
-    id: '11',
+    id: '5',
+    label: 'Сервисы',
+    href: '/services',
+  },
+  {
+    id: '6',
+    label: 'Все о работе',
+    href: '/all-about-work',
+  },
+  {
+    id: '7',
+    label: 'Заказ HR-услуг',
+    href: '/ordering-hr-services',
+  },
+  {
+    id: '8',
     label: 'Карьера в банке',
     href: '/banking-career',
+  },
+  {
+    id: '9',
+    label: 'Контакты',
+    href: '/сontacts',
+  },
+  {
+    id: '10',
+    label: 'Академия',
+    href: '/academy',
+  },
+  {
+    id: '11',
+    label: 'Заказ IT-услуг',
+    href: '/ordering-it-services',
   },
   {
     id: '12',
