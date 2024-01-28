@@ -19,6 +19,7 @@
   display: flex;
   justify-content: flex-start;
   color: $color-text;
+  border: 1px solid transparent;
   border-radius: $border-radius-m;
   background-color: $color-filed-grey-default;
   transition: $transition-m;
@@ -35,7 +36,7 @@
   }
 
   &_active {
-    border: 1px solid $color-black;
+    border-color: $color-black;
     background-color: $color-white;
 
     &:before {
@@ -54,9 +55,52 @@
   }
 }
 
-.list {
+.container {
+  padding-right: 30px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  @include flex-center;
+  @include text-tooltip;
+  width: fit-content;
+  padding: 8px 20px;
+  gap: 4px;
+  color: $color-white;
+  border-radius: $border-radius-s;
+  background-color: $color-black;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  color: $color-white;
+  background-color: transparent;
+  background-image: url('/icons/close-white.svg');
+  background-repeat: no-repeat;
+}
+
+.empty {
+  @include text-typing-s;
+  padding: 14px 8px;
+  text-align: center;
+  color: $color-black;
+}
+
+.search {
+  padding: 0 10px 10px;
+}
+
+.list {
+  @include flex-column;
+  max-height: 250px;
+  position: relative;
+
+  &_empty {
+    overflow: hidden;
+  }
 }
 
 .item {
@@ -72,6 +116,17 @@
 
   &_active {
     background-color: $color-hover-secondary-btn;
+  }
+
+
+  &_del {
+    width: 0;
+    height: 0;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: -150%;
   }
 }
 

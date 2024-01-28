@@ -32,7 +32,7 @@ input, button, textarea {
 }
 
 input, textarea {
-  
+
   &::placeholder {
     font-family: $font-family-main;
   }
@@ -42,3 +42,12 @@ button {
   cursor: pointer;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  height: 64px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $border-radius-m;
+  background: $color-grey-active-btn;
+}

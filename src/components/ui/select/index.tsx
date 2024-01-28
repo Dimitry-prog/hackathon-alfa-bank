@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Dropdown from '@/components/ui/dropdown';
+import Input from '@/components/ui/input';
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +14,10 @@ type SelectOptionType = {
 type SelectProps = {
   options: SelectOptionType[];
   onChange?: (option: SelectOptionType) => void;
+  isMulti?: boolean;
+  isSearch?: boolean;
   disabled?: boolean;
+  emptyLabel?: string;
   label?: string;
   placeholder?: string;
   error?: string;
@@ -23,7 +27,10 @@ type SelectProps = {
 const Select = ({
   options,
   onChange,
+  isMulti = false,
+  isSearch = false,
   disabled = false,
+  emptyLabel = 'Нет совпадений',
   label,
   error,
   placeholder = '',
@@ -31,14 +38,28 @@ const Select = ({
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState(placeholder);
-  const classes = cx('list', [className]);
+  const [tags, setTags] = useState<SelectOptionType[]>([]);
+  const [filteredOption, setFilteredOption] = useState<SelectOptionType[]>(options);
+  const [search, setSearch] = useState('');
+  const isEmpty = filteredOption.length === tags.length;
+  const classes = cx('list', isEmpty && 'list_empty', [className]);
 
   const handleOptionClick = (option: SelectOptionType) => {
-    setIsOpen(!isOpen);
     if (onChange) {
       onChange(option);
     }
-    setValue(option.value);
+
+    if (!isMulti) {
+      setIsOpen(!isOpen);
+      setValue(option.value);
+    } else {
+      const isExistOption = tags.find((opt) => opt.value === option.value);
+      if (isExistOption) {
+        setTags(tags.filter((option) => option.value !== isExistOption.value));
+      } else {
+        setTags((prev) => [...prev, option]);
+      }
+    }
   };
 
   const handleToggleOpen = () => {
@@ -46,10 +67,31 @@ const Select = ({
     setIsOpen(!isOpen);
   };
 
+  const handleTagClick = (option: SelectOptionType) => {
+    const isExistOption = tags.find((opt) => opt.value === option.value);
+    if (isExistOption) {
+      setTags(tags.filter((option) => option.value !== isExistOption.value));
+    }
+  };
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    if (search === '') {
+      setFilteredOption(options);
+    } else {
+      const fundedOption = options.filter((option) =>
+        option.value.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredOption(fundedOption);
+    }
+  }, [search]);
+
   const triggerEl = (
-    <button
+    <div
       onClick={handleToggleOpen}
-      type="button"
       className={cx(
         'trigger',
         isOpen && 'trigger_active',
@@ -57,8 +99,23 @@ const Select = ({
         disabled && 'trigger_disabled'
       )}
     >
-      {value}
-    </button>
+      {tags.length ? (
+        <div className={cx('container')}>
+          {tags.map((tag) => {
+            const tagLength = tag.value.length;
+            return (
+              <div key={tag.id} className={cx('tag')}>
+                {tagLength > 7 ? `${tag.value.slice(0, 7)}...` : tag.value}
+
+                <button onClick={() => handleTagClick(tag)} type="button" className={cx('close')} />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        value
+      )}
+    </div>
   );
 
   return (
@@ -66,17 +123,38 @@ const Select = ({
       {label && <span className={cx('label')}>{label}</span>}
 
       <Dropdown trigger={triggerEl} isOpen={isOpen} onClose={handleToggleOpen}>
-        <ul className={classes}>
-          {options.map((option) => (
-            <li
-              onClick={() => handleOptionClick(option)}
-              key={option.id}
-              className={cx('item', option.value === value && 'item_active')}
-            >
-              {option.value}
-            </li>
-          ))}
-        </ul>
+        <>
+          {isSearch && (
+            <div className={cx('search')}>
+              <Input
+                value={search}
+                onChange={handleSearch}
+                icon={<img src="/icons/lupa.svg" alt="Поиск" />}
+                placeholder="Поиск"
+              />
+            </div>
+          )}
+
+          <ul className={classes}>
+            {filteredOption.map((option) => (
+              <li
+                onClick={() => handleOptionClick(option)}
+                key={option.id}
+                className={cx(
+                  'item',
+                  option.value === value && 'item_active',
+                  isMulti &&
+                    option.value === tags.find((opt) => opt.value === option.value)?.value &&
+                    'item_del'
+                )}
+              >
+                {option.value}
+              </li>
+            ))}
+
+            {isEmpty && <p className={cx('empty')}>{emptyLabel}</p>}
+          </ul>
+        </>
       </Dropdown>
 
       {error && <span className={cx('error')}>{error}</span>}
