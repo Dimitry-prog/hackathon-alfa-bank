@@ -22,20 +22,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    networks:
-      - net
-  nginx:
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./conf.d/:/etc/nginx/conf.d/
-    networks:
-      - net
 volumes:
   db_value:
   static_volume:
-networks:
-  net:
-    driver: bridge
 

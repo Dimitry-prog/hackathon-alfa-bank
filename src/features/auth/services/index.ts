@@ -7,8 +7,11 @@ export const authApi = api.injectEndpoints({
     login: builder.mutation<LoginResponseType, LoginRequestType>({
       query: (body) => ({
         url: `/auth/jwt/login`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
         method: 'POST',
-        body,
+        body: transformBody(body),
       }),
     }),
     logout: builder.mutation({
@@ -28,3 +31,13 @@ export const authApi = api.injectEndpoints({
 });
 
 export const { useLoginMutation } = authApi;
+
+function transformBody(body: Record<string, string>) {
+  const formBody = [];
+  for (const property in body) {
+    const encodedKey = encodeURIComponent(property);
+    const encodedValue = encodeURIComponent(body[property]);
+    formBody.push(encodedKey + '=' + encodedValue);
+  }
+  return formBody.join('&');
+};
