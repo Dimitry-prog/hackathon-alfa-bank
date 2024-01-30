@@ -1,4 +1,3 @@
-import { api } from '@/libs/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { authApi } from '../services';
 

@@ -9,8 +9,8 @@ const cx = classNames.bind(styles);
 type SidebarMenuProps = {
   role: UserRoleType;
 };
-
 const SidebarMenu = ({ role }: SidebarMenuProps) => {
+  console.log(role);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 

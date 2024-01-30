@@ -3,12 +3,8 @@ import Button from '@/components/ui/button';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  LoginFormDataType,
-  loginFormSchema,
-} from '@/features/auth/components/login-form/validation';
+import { loginFormSchema } from '@/features/auth/components/login-form/validation';
 import Input from '@/components/ui/input';
-import { useNavigate } from 'react-router-dom';
 import { useLoginMutation } from '../../services';
 import { LoginRequestType } from '../../types';
 import { userActions } from '../../../user/slices';
@@ -19,7 +15,6 @@ const cx = classNames.bind(styles);
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -39,7 +34,6 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<LoginRequestType> = async (credentials) => {
     const response = await login(credentials);
     await getUser();
-    // console.log('222', response.data.access_token);
     dispatch(userActions.setToken(response.data.access_token));
   };
   const getTitle = (username: string) => {
