@@ -11,7 +11,6 @@ const cx = classNames.bind(styles);
 
 const Layout = () => {
   const { role } = useUserInfo();
-
   return (
     <div className={cx('wrapper')}>
       <Header />

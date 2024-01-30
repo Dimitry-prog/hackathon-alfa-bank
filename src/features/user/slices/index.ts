@@ -1,5 +1,6 @@
 import { UserRoleType, UserTaskType, UserType } from '@/features/user/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { userApi } from '../services';
 
 type UserStateType = {
   user: UserType | null;
@@ -33,6 +34,12 @@ export const userSlice = createSlice({
     setUserTask: (state, action: PayloadAction<UserTaskType>) => {
       state.userTask = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(userApi.endpoints.getUser.matchFulfilled, (state, { payload }) => {
+      state.role = payload.role;
+      state.name = payload.email;
+    });
   },
   selectors: {
     getCurrentUser: (state) => state.user,

@@ -11,6 +11,18 @@ export default defineConfig({
   server: {
     open: true,
     port: 3000,
+    proxy: {
+      '/auth': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+      },
+      '/users': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   build: {
     commonjsOptions: {
