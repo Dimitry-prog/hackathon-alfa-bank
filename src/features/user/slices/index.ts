@@ -5,7 +5,6 @@ import { userApi } from '../services';
 type UserStateType = {
   user: UserType | null;
   name: string;
-  token: string | null;
   role: UserRoleType;
   userTask: UserTaskType | null;
 };
@@ -14,7 +13,6 @@ const initialState: UserStateType = {
   user: null,
   userTask: null,
   name: '',
-  token: null,
   role: 'employee',
 };
 
@@ -24,9 +22,6 @@ export const userSlice = createSlice({
   reducers: {
     setUserRole: (state, action: PayloadAction<UserRoleType>) => {
       state.role = action.payload;
-    },
-    setToken: (state, action: PayloadAction<string>) => {
-      state.token = action.payload;
     },
     setUser: (state, action: PayloadAction<UserType>) => {
       state.user = action.payload;
@@ -39,12 +34,12 @@ export const userSlice = createSlice({
     builder.addMatcher(userApi.endpoints.getUser.matchFulfilled, (state, { payload }) => {
       state.role = payload.role;
       state.name = payload.email;
+      state.user = payload;
     });
   },
   selectors: {
     getCurrentUser: (state) => state.user,
     getUserRole: (state) => state.role,
-    getToken: (state) => state.token,
     getUserTask: (state) => state.userTask,
   },
 });

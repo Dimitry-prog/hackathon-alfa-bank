@@ -5,7 +5,6 @@ import Footer from '@/components/shared/footer';
 import { Outlet } from 'react-router-dom';
 import SidebarMenu from '@/components/shared/sidebar-menu';
 import useUserInfo from '@/features/user/hooks/use-user-info.tsx';
-
 const cx = classNames.bind(styles);
 
 const Layout = () => {
@@ -16,7 +15,6 @@ const Layout = () => {
       <Header />
       <div className={cx('container')}>
         <SidebarMenu role={userRole} />
-
         <main className={cx('main')}>
           <Outlet />
         </main>

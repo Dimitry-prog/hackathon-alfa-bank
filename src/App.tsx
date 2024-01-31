@@ -24,7 +24,6 @@ function App() {
           <Route path="info" element={<InfoPage />} />
           <Route path="request-task" element={<RequestTaskPage />} />
           <Route path="template" element={<TemplatePage />} />
-
           <Route path="employees">
             <Route index element={<ChiefHome />} />
             <Route path=":employeeId" element={<SingleEmployeePage />} />
