@@ -1,31 +1,34 @@
 import { api } from '@/libs/api.ts';
-import { UpdateUserByIdType, UpdateUserType, UserType } from '@/features/user/types';
+import { EmployeeType, UpdateUserByIdType, UpdateUserType, UserType } from '@/features/user/types';
 
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUser: builder.query<UserType, void>({
-      query: () => `http://alfabankhack.ddns.net:8000/users/me`,
+      query: () => `/users/me`,
+    }),
+    getEmployees: builder.query<EmployeeType[], void>({
+      query: () => `/api/v1/employees`,
     }),
     updateUser: builder.mutation<UserType, UpdateUserType>({
       query: (body) => ({
-        url: `http://alfabankhack.ddns.net:8000/users/me`,
+        url: `/users/me`,
         method: 'PATCH',
         body,
       }),
     }),
     getUserById: builder.mutation<UserType, string>({
-      query: (id) => `http://alfabankhack.ddns.net:8000/users/${id}`,
+      query: (id) => `/users/${id}`,
     }),
     updateUserById: builder.mutation<UserType, UpdateUserByIdType>({
       query: ({ body, id }) => ({
-        url: `http://alfabankhack.ddns.net:8000/users/${id}`,
+        url: `/users/${id}`,
         method: 'PATCH',
         body,
       }),
     }),
     deleteUserById: builder.mutation<string, string>({
       query: (id) => ({
-        url: `http://alfabankhack.ddns.net:8000/users/${id}`,
+        url: `/users/${id}`,
         method: 'DELETE',
       }),
     }),
@@ -34,6 +37,7 @@ export const userApi = api.injectEndpoints({
 
 export const {
   useGetUserQuery,
+  useGetEmployeesQuery,
   useUpdateUserMutation,
   useGetUserByIdMutation,
   useUpdateUserByIdMutation,
