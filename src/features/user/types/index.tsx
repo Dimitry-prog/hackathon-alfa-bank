@@ -14,6 +14,16 @@ export type UserType = {
   is_verified: boolean;
 };
 
+export type UpdateUserType = Pick<
+  UserType,
+  'first_name' | 'last_name' | 'patronymic_name' | 'photo'
+>;
+
+export type UpdateUserByIdType = {
+  id: string;
+  body: UpdateUserType;
+};
+
 export type UserTaskType = {
   title: string;
   start_date: number;
