@@ -17,7 +17,7 @@ const LoginForm = () => {
   const dispatch = useAppDispatch();
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { errors, isSubmitting },
     control,
     getValues,
   } = useForm<LoginRequestType>({
@@ -52,18 +52,27 @@ const LoginForm = () => {
         <Controller
           name="username"
           control={control}
-          render={({ field }) => <Input label="" placeholder="email" {...field} />}
+          render={({ field }) => (
+            <Input label="" placeholder="email" {...field} error={errors.username?.message} />
+          )}
         />
       )}
       {!!username && (
         <Controller
           name="password"
           control={control}
-          render={({ field }) => <Input label="" placeholder="password" {...field} />}
+          render={({ field }) => (
+            <Input label="" placeholder="Пароль" {...field} error={errors.password?.message} />
+          )}
         />
       )}
       {!username && (
-        <Button variant="primary" type="submit" className={cx('button-auth')}>
+        <Button
+          variant="primary"
+          type="submit"
+          disabled={isSubmitting}
+          className={cx('button-auth')}
+        >
           {isSubmitting ? 'Поиск...' : 'Продолжить'}
         </Button>
       )}

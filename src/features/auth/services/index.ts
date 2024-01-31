@@ -9,20 +9,20 @@ export const authApi = api.injectEndpoints({
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         },
-        url: `http://localhost:3000/auth/jwt/login`,
+        url: `http://alfabankhack.ddns.net:8000/auth/jwt/login`,
         method: 'POST',
         body: transformBody(body),
       }),
     }),
     logout: builder.mutation({
       query: () => ({
-        url: `http://localhost:3000/auth/jwt/logout`,
+        url: `http://alfabankhack.ddns.net:8000/auth/jwt/logout`,
         method: 'POST',
       }),
     }),
     register: builder.mutation<UserType, Omit<UserType, 'id'>>({
       query: (body) => ({
-        url: `http://localhost:3000/auth/register`,
+        url: `http://alfabankhack.ddns.net:8000/auth/register`,
         method: 'POST',
         body,
       }),
