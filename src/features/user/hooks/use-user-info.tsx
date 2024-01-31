@@ -5,11 +5,13 @@ const useUserInfo = () => {
   const userInfo = useAppSelector(userSelectors.getCurrentUser);
   const token = useAppSelector(userSelectors.getToken);
   const userTask = useAppSelector(userSelectors.getUserTask);
+  const userRole = useAppSelector(userSelectors.getUserRole);
 
   return {
     ...userInfo,
     token,
     userTask,
+    userRole,
   };
 };
 

@@ -3,13 +3,12 @@ import ChiefHome from '@/features/user/components/chief-home';
 import EmployeeHome from '@/features/user/components/employee-home';
 
 const HomePage = () => {
-  const { role } = useUserInfo();
-
+  const { userRole } = useUserInfo();
   return (
     <>
-      {role === 'employee' && <EmployeeHome />}
+      {userRole === 'employee' && <EmployeeHome />}
 
-      {role === 'chief' && <ChiefHome />}
+      {userRole === 'chief' && <ChiefHome />}
     </>
   );
 };
