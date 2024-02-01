@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import UserInfo from '@/components/shared/user-info';
 import TasksTable from '../../features/user/components/tasks-table';
 import Button from '@/components/ui/button';
+import UserGoal from '@/components/shared/user-goal';
 
 const cx = classNames.bind(styles);
 
@@ -12,7 +13,10 @@ const SingleEmployeePage = () => {
       <h2>Индивидуальный план развития</h2>
 
       <div className={cx('content')}>
-        <UserInfo />
+        <div className={cx('container')}>
+          <UserGoal />
+          <UserInfo />
+        </div>
         <TasksTable />
 
         <Button variant="accent" href="create">
