@@ -50,7 +50,7 @@ const Employee = ({ id, first_name, last_name, position, photo, pdp }: EmployeeP
           {pdp.deadline && <p className={cx('employee__text')}>{pdp.deadline}</p>}
           {!pdp && <p className={cx('employee__text')}>нет</p>}
 
-          <Link to="employees/12321" className={cx('employee__link')} />
+          <Link to={`employees/${id}`} className={cx('employee__link')} />
         </div>
       </div>
     </li>

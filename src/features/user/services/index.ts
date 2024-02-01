@@ -16,7 +16,7 @@ export const userApi = api.injectEndpoints({
         body,
       }),
     }),
-    getUserById: builder.mutation<UserType, string>({
+    getUserById: builder.query<UserType, string>({
       query: (id) => `/users/${id}`,
     }),
     updateUserById: builder.mutation<UserType, UpdateUserByIdType>({
@@ -39,7 +39,7 @@ export const {
   useGetUserQuery,
   useGetEmployeesQuery,
   useUpdateUserMutation,
-  useGetUserByIdMutation,
+  useGetUserByIdQuery,
   useUpdateUserByIdMutation,
   useDeleteUserByIdMutation,
 } = userApi;

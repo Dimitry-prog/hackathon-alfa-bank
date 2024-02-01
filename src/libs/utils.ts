@@ -6,7 +6,7 @@ export function selectStatus(str: string) {
       return 'status_in-work';
     case 'отменена':
       return 'status_canceled';
-    case 'исполнена':
+    case 'выполнена':
       return 'status_completed';
     default:
       return '';

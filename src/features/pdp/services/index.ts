@@ -4,14 +4,14 @@ import { PdpType, UpdatePdpType } from '@/features/pdp/types';
 export const pdpApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getMyPdp: builder.query<PdpType, void>({
-      query: () => `/pdp/my`,
+      query: () => `/api/v1/pdp/my`,
     }),
     getPdpById: builder.query<PdpType, number>({
-      query: (pdpId) => `/pdp/${pdpId}`,
+      query: (pdpId) => `/api/v1/pdp/${pdpId}`,
     }),
     updatePdp: builder.mutation<PdpType, UpdatePdpType>({
       query: (data) => ({
-        url: `/pdp/${data.pdpId}`,
+        url: `/api/v1/pdp/${data.pdpId}`,
         method: 'POST',
         body: data.body,
       }),
@@ -19,4 +19,4 @@ export const pdpApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetMyPdpQuery, useUpdatePdpMutation } = pdpApi;
+export const { useGetMyPdpQuery, useUpdatePdpMutation, useGetPdpByIdQuery } = pdpApi;
