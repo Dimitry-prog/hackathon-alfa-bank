@@ -1,11 +1,17 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { employeeList } from '@/libs/constants.ts';
 import Employee from '@/features/user/components/employee';
+import { EmployeeType } from '../../types';
+import { useGetEmployeesQuery } from '../../services';
+import { userSelectors } from '../../slices';
+import { useAppSelector } from '@/libs/store';
 
 const cx = classNames.bind(styles);
 
 const EmployeeList = () => {
+  useGetEmployeesQuery();
+  const employeesList = useAppSelector(userSelectors.getEmployees);
+
   return (
     <div className={cx('wrapper')}>
       <div className={cx('wrapper__container')}>
@@ -23,15 +29,14 @@ const EmployeeList = () => {
         </div>
       </div>
       <ul>
-        {employeeList.map((item) => (
+        {employeesList.map((item: EmployeeType) => (
           <Employee
-            key={item.id}
-            imgSrc={item.imgSrc}
-            name={item.name}
+            id={item.id}
+            first_name={item.first_name}
+            last_name={item.last_name}
             position={item.position}
-            icon={item.icon}
-            status={item.status}
-            data={item.data}
+            photo={item.photo}
+            pdp={item.pdp}
           />
         ))}
       </ul>

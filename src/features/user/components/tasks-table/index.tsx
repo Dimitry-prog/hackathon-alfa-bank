@@ -3,15 +3,10 @@ import styles from './styles.module.scss';
 import { tasks } from '@/libs/constants.ts';
 import { Link } from 'react-router-dom';
 import { selectStatus } from '@/libs/utils.ts';
-import useUserInfo from '@/features/user/hooks/use-user-info.tsx';
 
 const cx = classNames.bind(styles);
 
 const TasksTable = () => {
-  const { userTask } = useUserInfo();
-
-  if (!userTask) return null;
-
   return (
     <table className={cx('table')}>
       <thead className={cx('table-head')}>

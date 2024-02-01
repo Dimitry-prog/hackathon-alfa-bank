@@ -1,40 +1,58 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
+import ProgressBar from '@/components/shared/progress-bar';
 
 const cx = classNames.bind(styles);
 type EmployeeProps = {
-  key: string;
-  imgSrc: string;
-  name: string;
+  id: number;
+  first_name: string;
+  last_name: string;
+  patronymic_name?: string | null;
   position: string;
-  icon: string;
-  status: string;
-  data: string;
+  photo?: string;
+  pdp: {
+    goal: string;
+    deadline: string;
+    id: number;
+    done: number;
+    total: number;
+  };
 };
 
-const Employee = ({ key, imgSrc, name, position, icon, status, data }: EmployeeProps) => {
+const Employee = ({ id, first_name, last_name, position, photo, pdp }: EmployeeProps) => {
   return (
-    <li key={key} className={cx('employee')}>
+    <li key={id} className={cx('employee')}>
       <Link to="employees/12321">
         <div className={cx('employee__container')}>
           <div className={cx('employee__data')}>
-            <img className={cx('employee__avatar')} src={imgSrc} alt={name} />
+            <img className={cx('employee__avatar')} src={photo} alt={first_name} />
             <div className={cx('employee__info')}>
-              <h4 className={cx('employee__name')}>{name}</h4>
+              <h4 className={cx('employee__name')}>
+                {first_name} {last_name}
+              </h4>
               <p className={cx('employee__position')}>{position}</p>
             </div>
           </div>
           <div className={cx('employee__condition')}>
-            <div>
-              <img className={cx('employee__icon')} src={icon} alt={status} />
-              <p className={cx('employee__text')}>{status}</p>
-            </div>
+            {!pdp && (
+              <div>
+                <img className={cx('employee__icon')} src="@/icons/no-pdp" alt="Нет ИПР" />
+                <p className={cx('employee__text')}>Нет ИПР</p>
+              </div>
+            )}
+            {pdp && (
+              <div className={cx('employee__progress-bar')}>
+                <ProgressBar step={pdp.done} totalSteps={pdp.total} />
+              </div>
+            )}
           </div>
           <div className={cx('employee__condition')}>
-            <p className={cx('employee__text')}>{data}</p>
+            {pdp.deadline && <p className={cx('employee__text')}>{pdp.deadline}</p>}
+            {!pdp && <p className={cx('employee__text')}>нет</p>}
+
+            <div className={cx('employee__link')}></div>
           </div>
-          <div className={cx('employee__link')}></div>
         </div>
       </Link>
     </li>

@@ -4,7 +4,7 @@
   @include flex-column;
   gap: 48px;
 
-  & > h2 {
+  &>h2 {
     @include h1-title;
     color: $color-black;
   }
@@ -13,4 +13,11 @@
 .content {
   @include flex-column;
   gap: 40px;
+}
+
+.container {
+  @include flex-row;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
 }

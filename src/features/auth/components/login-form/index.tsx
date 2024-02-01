@@ -7,14 +7,10 @@ import { loginFormSchema } from '@/features/auth/components/login-form/validatio
 import Input from '@/components/ui/input';
 import { useLoginMutation } from '../../services';
 import { LoginRequestType } from '../../types';
-import { userActions } from '../../../user/slices';
-import { useGetUserMutation } from '@/features/user/services';
-import { useAppDispatch } from '@/libs/store';
 
 const cx = classNames.bind(styles);
 
 const LoginForm = () => {
-  const dispatch = useAppDispatch();
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -28,13 +24,10 @@ const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
   const [login] = useLoginMutation();
-  const [getUser] = useGetUserMutation();
   const username = getValues('username');
 
   const onSubmit: SubmitHandler<LoginRequestType> = async (credentials) => {
-    const response = await login(credentials);
-    await getUser();
-    dispatch(userActions.setToken(response.data.access_token));
+    await login(credentials);
   };
   const getTitle = (username: string) => {
     if (username.length > 0) {
