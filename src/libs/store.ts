@@ -5,9 +5,11 @@ import { api } from './api.ts';
 import { modalSlice } from '@/shared/slices/modal-slice.ts';
 import { userSlice } from '@/features/user/slices';
 import { authSlice } from '@/features/auth/slices';
+import { taskSlice } from '@/features/tasks/slices';
+import { pdpSlice } from '@/features/pdp/slices';
 import { templateSlice } from '@/features/template/slices';
 
-const rootReducer = combineSlices(api, authSlice, userSlice, templateSlice, modalSlice);
+const rootReducer = combineSlices(api, authSlice, userSlice, templateSlice, pdpSlice, taskSlice, modalSlice);
 
 const store = configureStore({
   reducer: rootReducer,
