@@ -5,14 +5,13 @@
   @include flex-center;
   gap: 26px;
 
-  & > div {
-    max-width: 160px;
-    width: 100%;
+  &>div {
+    width: 160px;
     height: 8px;
     background-color: $color-divider;
     border-radius: $border-radius-m;
 
-    & > span {
+    &>span {
       height: 8px;
       display: block;
       background-color: $color-lime;
@@ -20,7 +19,7 @@
     }
   }
 
-  & > p {
+  &>p {
     @include text-typing-s;
     color: $color-black;
   }
