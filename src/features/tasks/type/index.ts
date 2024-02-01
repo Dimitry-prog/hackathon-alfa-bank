@@ -30,10 +30,10 @@ export type UpdateTaskType = {
 
 export type StatusesType = {
   id: number;
-  name: string;
+  value: string;
 };
 
 export type TypesType = {
   id: number;
-  name: string;
+  value: string;
 };

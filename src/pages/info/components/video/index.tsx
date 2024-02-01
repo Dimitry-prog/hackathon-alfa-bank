@@ -45,29 +45,35 @@ const Video = () => {
         </div>
       </section>
 
-      <Modal name="chief">
-        <iframe
-          width="100%"
-          height="315"
-          src="https://www.youtube.com/embed/9bZkp7q19f0?si=REnXXfnqvEPy-9IQ"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </Modal>
+      <Modal
+        name="chief"
+        body={
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/9bZkp7q19f0?si=REnXXfnqvEPy-9IQ"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        }
+      />
 
-      <Modal name="employee">
-        <iframe
-          width="100%"
-          height="315"
-          src="https://www.youtube.com/embed/5NPBIwQyPWE?si=BbIuuRjE1oJC5_Q3"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </Modal>
+      <Modal
+        name="employee"
+        body={
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/5NPBIwQyPWE?si=BbIuuRjE1oJC5_Q3"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        }
+      />
     </>
   );
 };

@@ -7,13 +7,13 @@ import Input from '@/components/ui/input';
 const cx = classNames.bind(styles);
 
 type SelectOptionType = {
-  id: string;
+  id: number;
   value: string;
 };
 
 type SelectProps = {
   options: SelectOptionType[];
-  onChange?: (option: SelectOptionType) => void;
+  onChange?: (option: SelectOptionType | SelectOptionType[]) => void;
   isMulti?: boolean;
   isSearch?: boolean;
   disabled?: boolean;
@@ -41,25 +41,40 @@ const Select = ({
   const [tags, setTags] = useState<SelectOptionType[]>([]);
   const [filteredOption, setFilteredOption] = useState<SelectOptionType[]>(options);
   const [search, setSearch] = useState('');
-  const isEmpty = filteredOption.length === tags.length;
+  const isEmpty = filteredOption?.length === tags.length;
   const classes = cx('list', isEmpty && 'list_empty', [className]);
 
   const handleOptionClick = (option: SelectOptionType) => {
     if (onChange) {
-      onChange(option);
-    }
-
-    if (!isMulti) {
-      setIsOpen(!isOpen);
-      setValue(option.value);
-    } else {
-      const isExistOption = tags.find((opt) => opt.value === option.value);
-      if (isExistOption) {
-        setTags(tags.filter((option) => option.value !== isExistOption.value));
+      if (isMulti) {
+        const updatedTags = tags.includes(option)
+          ? tags.filter((tag) => tag !== option)
+          : [...tags, option];
+        onChange(updatedTags);
+        const isExistOption = tags.find((opt) => opt.value === option.value);
+        if (isExistOption) {
+          setTags(tags.filter((option) => option.value !== isExistOption.value));
+        } else {
+          setTags((prev) => [...prev, option]);
+        }
       } else {
-        setTags((prev) => [...prev, option]);
+        onChange(option);
+        setIsOpen(!isOpen);
+        setValue(option.value);
       }
     }
+
+    // if (!isMulti) {
+    //   setIsOpen(!isOpen);
+    //   setValue(option.value);
+    // } else {
+    //   const isExistOption = tags.find((opt) => opt.value === option.value);
+    //   if (isExistOption) {
+    //     setTags(tags.filter((option) => option.value !== isExistOption.value));
+    //   } else {
+    //     setTags((prev) => [...prev, option]);
+    //   }
+    // }
   };
 
   const handleToggleOpen = () => {
@@ -136,7 +151,7 @@ const Select = ({
           )}
 
           <ul className={classes}>
-            {filteredOption.map((option) => (
+            {filteredOption?.map((option) => (
               <li
                 onClick={() => handleOptionClick(option)}
                 key={option.id}
