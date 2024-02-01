@@ -423,18 +423,6 @@ export const card = [
   },
 ];
 
-export const employeeList = [
-  {
-    id: '1',
-    imgSrc: '/images/foto-employee.png',
-    name: 'Константинов-Полонский-Георгиевский Владимир Владиславович',
-    position: 'Frontend-разработчик',
-    icon: '/icons/no-pdp.svg',
-    status: 'нет ИПР',
-    data: 'нет',
-  },
-];
-
 export const typesTaskMock = [
   {
     id: '1',
