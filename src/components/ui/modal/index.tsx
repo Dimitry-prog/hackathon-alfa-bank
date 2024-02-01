@@ -10,10 +10,11 @@ const cx = classNames.bind(styles);
 type ModalProps = {
   name: string;
   title?: string;
-  children?: ReactNode;
+  body?: ReactNode;
+  footer?: ReactNode;
 };
 
-const Modal = ({ name, title, children }: ModalProps) => {
+const Modal = ({ name, title, body, footer }: ModalProps) => {
   const modalName = useAppSelector(modalSelectors.getModalName);
   const isOpen = useAppSelector(modalSelectors.isModalOpen);
   const dispatch = useAppDispatch();
@@ -53,16 +54,20 @@ const Modal = ({ name, title, children }: ModalProps) => {
           className={cx('wrapper', isOpen && 'open')}
         >
           <div className={cx('container')}>
-            <button
-              onClick={handleCloseModal}
-              type="button"
-              aria-label="close modal"
-              className={cx('close')}
-            />
+            <div className={cx('header', title && 'header_title')}>
+              {title && <h3 className={cx('title')}>{title}</h3>}
 
-            {title && <h3 className={cx('title')}>{title}</h3>}
+              <button
+                onClick={handleCloseModal}
+                type="button"
+                aria-label="close modal"
+                className={cx('close')}
+              />
+            </div>
 
-            {children}
+            {body}
+
+            {footer}
           </div>
         </div>
       ) : null}

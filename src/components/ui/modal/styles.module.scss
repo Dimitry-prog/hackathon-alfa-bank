@@ -24,17 +24,26 @@
   @include flex-column;
   width: 100%;
   max-width: 600px;
-  padding: 52px 52px 126px;
+  padding: 50px;
+  gap: 30px;
   border-radius: $border-radius-xl;
   background-color: $color-white;
   z-index: 51;
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 1fr min-content;
+
+  &_title {
+    gap: 16px;
+  }
+}
+
 .close {
   width: 24px;
   height: 24px;
-  margin-bottom: 50px;
-  align-self: flex-end;
+  justify-self: self-end;
   background-color: transparent;
   background-image: url('/icons/close.svg');
   background-repeat: no-repeat;
@@ -48,9 +57,7 @@
 }
 
 .title {
-  @include h1-title;
-  margin-bottom: 40px;
-  letter-spacing: 0.6px;
-  text-align: center;
+  @include h2-title;
+  text-align: left;
   color: $color-black;
 }

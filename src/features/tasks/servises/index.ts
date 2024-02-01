@@ -20,13 +20,19 @@ export const tasksApi = api.injectEndpoints({
         body: data,
       }),
     }),
-    getStatuses: builder.query<StatusesType, void>({
-      query: () => `/task_properties/statuses`,
+    getStatuses: builder.query<StatusesType[], void>({
+      query: () => `/api/v1/task_properties/statuses`,
     }),
-    getTypes: builder.query<TypesType, void>({
-      query: () => `/task_properties/types`,
+    getTypes: builder.query<TypesType[], void>({
+      query: () => `/api/v1/task_properties/types`,
     }),
   }),
 });
 
-export const { useGetTaskQuery, useUpdateTaskMutation, useCreateTaskMutation } = tasksApi;
+export const {
+  useGetTaskQuery,
+  useUpdateTaskMutation,
+  useCreateTaskMutation,
+  useGetStatusesQuery,
+  useGetTypesQuery,
+} = tasksApi;

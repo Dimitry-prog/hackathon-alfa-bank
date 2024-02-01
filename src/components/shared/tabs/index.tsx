@@ -15,15 +15,15 @@ type TabsProps = {
 
 const Tabs = ({ tabs }: TabsProps) => {
   const { pathname } = useLocation();
-  const basePath = pathname === '/' ? '' : pathname;
 
   return (
     <div className={cx('wrapper')}>
       {tabs.map((tab) => (
         <Button
-          href={`${basePath}${tab.href}`}
+          key={tab.id}
+          href={`${tab.href}`}
           variant="link"
-          className={cx('button', pathname.includes(tab.href) && 'button_active')}
+          className={cx('button', pathname.endsWith(tab.href) && 'button_active')}
         >
           {tab.label}
         </Button>

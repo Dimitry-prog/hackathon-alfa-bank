@@ -7,8 +7,9 @@ import { userSlice } from '@/features/user/slices';
 import { authSlice } from '@/features/auth/slices';
 import { taskSlice } from '@/features/tasks/slices';
 import { pdpSlice } from '@/features/pdp/slices';
+import { templateSlice } from '@/features/template/slices';
 
-const rootReducer = combineSlices(api, authSlice, modalSlice, pdpSlice, taskSlice, userSlice);
+const rootReducer = combineSlices(api, authSlice, userSlice, templateSlice, pdpSlice, taskSlice, modalSlice);
 
 const store = configureStore({
   reducer: rootReducer,

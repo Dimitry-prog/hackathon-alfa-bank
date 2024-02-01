@@ -425,23 +425,23 @@ export const card = [
 
 export const typesTaskMock = [
   {
-    id: '1',
+    id: 1,
     value: 'Самостоятельное обучение',
   },
   {
-    id: '2',
+    id: 2,
     value: 'Внутренний курс',
   },
   {
-    id: '3',
+    id: 3,
     value: 'Внешний курс',
   },
   {
-    id: '4',
+    id: 4,
     value: 'Наставничество',
   },
   {
-    id: '5',
+    id: 5,
     value: 'Менторство',
   },
 ];
@@ -479,5 +479,18 @@ export const loginFooterLinks = [
     id: '2',
     href: '/login/help',
     label: 'Мобильное приложение',
+  },
+];
+
+export const templateTabsMock = [
+  {
+    id: '1',
+    label: 'Поиск по катологу',
+    href: '/template',
+  },
+  {
+    id: '2',
+    label: 'Сохранить задачу в образец',
+    href: '/template/save',
   },
 ];
