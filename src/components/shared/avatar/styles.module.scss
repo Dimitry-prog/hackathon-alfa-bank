@@ -4,7 +4,7 @@
   width: 48px;
   height: 48px;
 
-  & > img {
+  &>img {
     border-radius: $border-radius-circle;
     object-fit: cover;
   }

@@ -32,6 +32,7 @@ const SingleEmployeePage = () => {
             first_name={currentEmployee!.first_name}
             last_name={currentEmployee!.last_name}
             position={currentEmployee!.position}
+            photo={currentEmployee?.photo || ''}
           />
         </div>
         {pdpInfo?.tasks && <TasksTable tasks={pdpInfo.tasks} />}
