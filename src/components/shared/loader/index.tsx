@@ -11,7 +11,7 @@ const Loader = ({ size = 'm' }: LoaderProps) => {
   const classes = cx('loader', size);
 
   return (
-    <div role="status">
+    <div role="status" className={cx('wrapper')}>
       <svg
         aria-hidden="true"
         className={classes}

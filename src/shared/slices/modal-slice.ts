@@ -24,6 +24,7 @@ export const modalSlice = createSlice({
     },
   },
   selectors: {
+    getModalInfo: (state) => state,
     getModalName: (state) => state.name,
     isModalOpen: (state) => state.isOpen,
   },

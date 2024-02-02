@@ -14,15 +14,47 @@ export type TemplateType = {
   recommendation: string;
 };
 
+export type TemplateByIdType = {
+  title: 'string';
+  id: 0;
+  description: 'string';
+  skills: [{}];
+  user: {
+    id: 0;
+    first_name: 'string';
+    last_name: 'string';
+    patronymic_name: 'string';
+    position: 'string';
+    role: 'chief';
+    photo: 'string';
+  };
+  direction: {
+    id: 0;
+    value: 'string';
+  };
+  grade: {
+    id: 0;
+    value: 'string';
+  };
+  type: {
+    id: 0;
+    value: 'string';
+  };
+  link: 'string';
+  duration: 0;
+  recommendation: 'string';
+};
+
 export type RequestTemplateType = {
   title: string;
   description: string;
-  skills: string;
+  skills: string[];
   direction_id: number;
   grade_id: number;
   type_id: number;
+  link: string;
   duration: number;
-  recommendation: 'string';
+  recommendation: string;
 };
 
 export type RequestUpdateTemplateType = {
@@ -67,4 +99,9 @@ export type TemplateQueryType = {
   grade: number[];
   type: string;
   creator: string;
+};
+
+export type SetTemplateToUsersRequestType = {
+  users_ids: number[];
+  template_id: number;
 };

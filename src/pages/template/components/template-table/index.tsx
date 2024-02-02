@@ -33,7 +33,7 @@ const TemplateTable = ({ templates }: TemplateTableProps) => {
             <td>{template.skills.map((skill) => skill.value).join(' ')}</td>
             <td>{template.user.last_name}</td>
             <td>
-              <Link to="view" className={cx('view')} />
+              <Link to={`${template.id}`} className={cx('view')} />
             </td>
           </tr>
         ))}

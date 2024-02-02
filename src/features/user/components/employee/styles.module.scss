@@ -28,10 +28,6 @@
     margin-left: 20px;
   }
 
-  &__avatar {
-    @include size-image;
-  }
-
   &__name {
     @include text-typing-l;
     margin-bottom: 4px;

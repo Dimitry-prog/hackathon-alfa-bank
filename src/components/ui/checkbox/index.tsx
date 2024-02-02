@@ -1,27 +1,22 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { TextareaHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
 const cx = classNames.bind(styles);
 
 type CheckboxProps = {
-  checked: boolean;
-  onChange: (checked: boolean) => void;
-  label?: string;
-} & TextareaHTMLAttributes<HTMLTextAreaElement>;
+  name?: string;
+  error?: string;
+  className?: string;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
+const Checkbox = ({ name, checked, className, onChange, error, ...restProps }: CheckboxProps) => {
+  const classes = cx('checkbox', [className]);
+
   return (
-    <div className={cx('wrapper')}>
-      <label className={cx('label')}>
-        <input
-          className={cx('checkbox')}
-          type="checkbox"
-          checked={checked}
-          onChange={(e) => onChange(e.target.checked)}
-        />
-        {label}
-      </label>
+    <div className={classes}>
+      <input name={name} checked={checked} onChange={onChange} type="checkbox" {...restProps} />
+      {error && <span className={cx('error')}>{error}</span>}
     </div>
   );
 };

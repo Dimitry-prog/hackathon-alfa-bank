@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import ProgressBar from '@/components/shared/progress-bar';
+import Avatar from '@/components/shared/avatar';
 
 const cx = classNames.bind(styles);
 type EmployeeProps = {
@@ -25,7 +26,7 @@ const Employee = ({ id, first_name, last_name, position, photo, pdp }: EmployeeP
     <li key={id} className={cx('employee')}>
       <div className={cx('employee__container')}>
         <div className={cx('employee__data')}>
-          <img className={cx('employee__avatar')} src={photo} alt={first_name} />
+          <Avatar src={photo} />
           <div className={cx('employee__info')}>
             <h4 className={cx('employee__name')}>
               {first_name} {last_name}
