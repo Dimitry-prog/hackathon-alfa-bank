@@ -63,18 +63,6 @@ const Select = ({
         setValue(option.value);
       }
     }
-
-    // if (!isMulti) {
-    //   setIsOpen(!isOpen);
-    //   setValue(option.value);
-    // } else {
-    //   const isExistOption = tags.find((opt) => opt.value === option.value);
-    //   if (isExistOption) {
-    //     setTags(tags.filter((option) => option.value !== isExistOption.value));
-    //   } else {
-    //     setTags((prev) => [...prev, option]);
-    //   }
-    // }
   };
 
   const handleToggleOpen = () => {

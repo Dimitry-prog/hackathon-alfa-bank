@@ -5,41 +5,50 @@ import Input from '@/components/ui/input';
 import Button from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Select from '@/components/ui/select';
-import {
-  FilterTemplateFormDataType,
-  filterTemplateFormSchema,
-} from '@/pages/template/components/filter-template-form/validation';
 import { useProperties } from '@/shared/hooks/use-properties.ts';
 import Loader from '@/components/shared/loader';
-import { TemplateQueryType } from '@/features/template/types';
-import { useAppDispatch } from '@/libs/store.ts';
-import { templateActions } from '@/features/template/slices';
+import {
+  CreateTemplateFormDataType,
+  createTemplateFormSchema,
+} from '@/pages/template/components/create-template-form/validation';
+import Textarea from '@/components/ui/textarea';
+import { useCreateTemplateMutation } from '@/features/template/services';
+import { useNavigate } from 'react-router-dom';
+import { useModal } from '@/shared/hooks/use-modal.ts';
 
 const cx = classNames.bind(styles);
 
-const FilterTemplateForm = () => {
-  const { directions, creators, grades, skills, types, isLoading } = useProperties();
-  const dispatch = useAppDispatch();
+const CreateTemplateForm = () => {
+  const { directions, grades, skills, types, isLoading } = useProperties();
+  const [create] = useCreateTemplateMutation();
+  const navigate = useNavigate();
+  const { onOpen } = useModal();
 
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
     control,
-  } = useForm<FilterTemplateFormDataType>({
-    resolver: zodResolver(filterTemplateFormSchema),
+  } = useForm<CreateTemplateFormDataType>({
+    defaultValues: {
+      skills: [],
+    },
+    resolver: zodResolver(createTemplateFormSchema),
   });
 
-  const onSubmit: SubmitHandler<FilterTemplateFormDataType> = (data) => {
-    const query: TemplateQueryType = {
-      q: data.title,
-      direction: data?.direction?.value || '',
-      type: data.type?.value || '',
-      creator: data.creator?.value || '',
-      skills: data.skills?.map((skill) => skill.id) || [],
-      grade: data.grade?.map((grade) => grade.id) || [],
+  const onSubmit: SubmitHandler<CreateTemplateFormDataType> = async (data) => {
+    const template = {
+      title: data.title,
+      description: data.description,
+      skills: data.skills.map((skill) => skill.value),
+      direction_id: data.direction?.id ? parseInt(data.direction?.id) : 1,
+      grade_id: data.grade?.id ? parseInt(data.grade?.id) : 1,
+      type_id: data.type?.id ? parseInt(data.type?.id) : 1,
+      link: 'string',
+      duration: 1,
+      recommendation: 'string',
     };
-    dispatch(templateActions.setQuery(query));
-    dispatch(templateActions.setStartQueryRequest(true));
+    await create(template);
+    onOpen(data.title);
   };
 
   return (
@@ -53,9 +62,8 @@ const FilterTemplateForm = () => {
             control={control}
             render={({ field }) => (
               <Input
-                label="Поиск задачи"
-                placeholder="Текст"
-                icon={<img src="/icons/lupa.svg" alt="Поиск" />}
+                label="Название задачи"
+                placeholder="Введите название задачи"
                 {...field}
                 disabled={isSubmitting}
                 error={errors.title?.message}
@@ -127,8 +135,6 @@ const FilterTemplateForm = () => {
                   <Select
                     options={grades}
                     onChange={field.onChange}
-                    isMulti
-                    isSearch
                     label="Уровень"
                     placeholder="Выберите уровень"
                     disabled={isSubmitting}
@@ -139,26 +145,28 @@ const FilterTemplateForm = () => {
             )}
           </div>
 
-          {creators.length && (
-            <Controller
-              name="creator"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  options={creators}
-                  onChange={field.onChange}
-                  label="Создатель"
-                  placeholder="Выберите название должности"
-                  disabled={isSubmitting}
-                  error={errors.creator?.value?.message}
-                />
-              )}
-            />
-          )}
+          <Controller
+            name="description"
+            control={control}
+            render={({ field }) => (
+              <Textarea
+                value={field.value}
+                onChange={field.onChange}
+                label="Содержание"
+                placeholder="Подробно опишите задачу"
+                disabled={isSubmitting}
+                error={errors.description?.message}
+              />
+            )}
+          />
 
           <div className={cx('buttons')}>
             <Button type="submit" variant="accent" disabled={isSubmitting}>
-              {isSubmitting ? <Loader size="s" /> : 'Найти'}
+              {isSubmitting ? <Loader size="s" /> : 'Сохранить задачу в образец'}
+            </Button>
+
+            <Button onClick={() => navigate(-1)} type="button" variant="secondary">
+              Отмена
             </Button>
           </div>
         </form>
@@ -167,4 +175,4 @@ const FilterTemplateForm = () => {
   );
 };
 
-export default FilterTemplateForm;
+export default CreateTemplateForm;

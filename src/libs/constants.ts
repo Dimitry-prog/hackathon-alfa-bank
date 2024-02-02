@@ -491,6 +491,6 @@ export const templateTabsMock = [
   {
     id: '2',
     label: 'Сохранить задачу в образец',
-    href: '/template/save',
+    href: '/template/create',
   },
 ];

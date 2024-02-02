@@ -1,21 +1,27 @@
 import { EmployeeType, UserType } from '@/features/user/types';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userApi } from '../services';
 
 type UserStateType = {
   user: UserType | null;
   employees: EmployeeType[];
+  searchQuery: string;
 };
 
 const initialState: UserStateType = {
   user: null,
   employees: [],
+  searchQuery: '',
 };
 
 export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addMatcher(userApi.endpoints.getUser.matchFulfilled, (state, { payload }) => {
       state.user = payload;
@@ -27,6 +33,7 @@ export const userSlice = createSlice({
   selectors: {
     getCurrentUser: (state) => state.user,
     getEmployees: (state) => state.employees,
+    getSearchQuery: (state) => state.searchQuery,
   },
 });
 

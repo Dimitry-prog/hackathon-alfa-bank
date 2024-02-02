@@ -1,5 +1,11 @@
 @import "@/shared/styles/styles";
 
+.wrapper {
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
+
 .loader {
   color: $color-grey-tertiary-btn;
   fill: $color-red;

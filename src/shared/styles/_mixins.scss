@@ -83,6 +83,12 @@
   font-weight: 500;
 }
 
+@mixin text-futer {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
 @mixin flex-column {
   display: flex;
   flex-direction: column;
