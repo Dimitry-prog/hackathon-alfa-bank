@@ -4,7 +4,7 @@ export type PdpType = {
   starting_date: string;
   deadline: string;
   user_id: number;
-  tasks: null;
+  tasks: Task[];
   done: number;
   total: number;
 };

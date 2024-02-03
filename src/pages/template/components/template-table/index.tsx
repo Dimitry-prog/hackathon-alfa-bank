@@ -24,9 +24,9 @@ const TemplateTable = ({ templates }: TemplateTableProps) => {
         </tr>
       </thead>
       <tbody className={cx('body')}>
-        {templates.map((template) => (
+        {templates.map((template, index) => (
           <tr key={template.id} className={cx('rows')}>
-            <td>{template.id}</td>
+            <td>{index + 1}</td>
             <td>{template.title}</td>
             <td>{template.grade.value}</td>
             <td>{template.type.value}</td>

@@ -9,27 +9,21 @@ export const sidebarMenuLinks = [
     links: [
       {
         id: '1',
-        label: 'Мой план развития',
-        href: '/my-plan',
-        imgSrc: 'icons/my-dev.svg',
+        label: 'Планы развития команды',
+        href: '/employees',
+        imgSrc: 'icons/komands-dev.svg',
       },
       {
         id: '2',
-        label: 'Планы развития команды',
-        href: '/',
-        imgSrc: 'icons/komands-dev.svg',
+        label: 'Конструктор ИПР',
+        href: '/template',
+        imgSrc: 'icons/template.svg',
       },
       {
         id: '3',
         label: 'Информация о развитии',
         href: '/info',
         imgSrc: 'icons/info-dev.svg',
-      },
-      {
-        id: '4',
-        label: 'Конструктор ИПР',
-        href: '/template',
-        imgSrc: 'icons/template.svg',
       },
     ],
   },
@@ -39,7 +33,7 @@ export const sidebarMenuLinks = [
       {
         id: '1',
         label: 'Мой план развития',
-        href: '/',
+        href: '/pdp',
         imgSrc: 'icons/my-dev.svg',
       },
       {
@@ -70,12 +64,6 @@ export const alfaSidebarMenuLinks = [
     label: 'Моя команда',
     href: '/my-team',
     imgSrc: 'icons/my-team.svg',
-  },
-  {
-    id: '4',
-    label: 'ИПР',
-    href: '/pdp',
-    imgSrc: 'icons/pdp.svg',
   },
   {
     id: '5',
@@ -448,23 +436,23 @@ export const typesTaskMock = [
 
 export const statusTaskMock = [
   {
-    id: '1',
+    id: 1,
     value: 'Заявка',
   },
   {
-    id: '2',
+    id: 2,
     value: 'В работе',
   },
   {
-    id: '3',
+    id: 3,
     value: 'Исполнена',
   },
   {
-    id: '4',
+    id: 4,
     value: 'Отменена',
   },
   {
-    id: '5',
+    id: 5,
     value: 'Хорошо',
   },
 ];
@@ -494,3 +482,20 @@ export const templateTabsMock = [
     href: '/template/create',
   },
 ];
+
+export const defaultValuesEmployeeFormData = {
+  title: '',
+  start_date: undefined,
+  deadline: undefined,
+  type: {
+    id: 1,
+    value: '',
+  },
+  status: {
+    id: 6,
+    value: 'Заявка',
+  },
+  description: '',
+  skills: [],
+  comment: '',
+};

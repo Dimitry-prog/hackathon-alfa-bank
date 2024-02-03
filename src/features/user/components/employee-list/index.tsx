@@ -35,7 +35,6 @@ const EmployeeList = () => {
             first_name={item.first_name}
             last_name={item.last_name}
             position={item.position}
-            photo={item.photo}
             pdp={item.pdp}
           />
         ))}

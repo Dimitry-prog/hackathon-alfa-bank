@@ -6,11 +6,17 @@ import { headerLinks } from '@/libs/constants';
 import { Link, useLocation } from 'react-router-dom';
 import Logo from '@/components/shared/logo';
 import Notification from '../notification';
+import Dropdown from '@/components/ui/dropdown';
+import { useState } from 'react';
+import { useAppDispatch } from '@/libs/store.ts';
+import { authActions } from '@/features/auth/slices';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
+  const dispatch = useAppDispatch();
 
   return (
     <header className={cx('header')}>
@@ -28,9 +34,30 @@ const Header = () => {
       </nav>
 
       <div className={cx('wrapper')}>
-        <Input type="text" icon={<img src="/icons/lupa.svg" alt="поиск" />} placeholder="Поиск" />
+        <Input
+          type="text"
+          icon={<img src="/icons/lupa.svg" alt="поиск" />}
+          placeholder="Поиск"
+          className={cx('input')}
+        />
         <Notification />
-        <Avatar />
+
+        <Dropdown
+          isOpen={isOpen}
+          trigger={
+            <div onClick={() => setIsOpen(!isOpen)}>
+              <Avatar />
+            </div>
+          }
+          onClose={() => setIsOpen(!isOpen)}
+          style={{ width: 'max-content' }}
+        >
+          <ul className={cx('list')}>
+            <li onClick={() => dispatch(authActions.logout())} className={cx('item')}>
+              Выйти из аккаунта
+            </li>
+          </ul>
+        </Dropdown>
       </div>
     </header>
   );

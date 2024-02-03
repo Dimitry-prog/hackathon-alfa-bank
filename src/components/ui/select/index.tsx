@@ -14,6 +14,8 @@ type SelectOptionType = {
 type SelectProps = {
   options: SelectOptionType[];
   onChange?: (option: SelectOptionType | SelectOptionType[]) => void;
+  multiDefaultValues?: SelectOptionType[];
+  defaultValue?: string;
   isMulti?: boolean;
   isSearch?: boolean;
   disabled?: boolean;
@@ -27,6 +29,8 @@ type SelectProps = {
 const Select = ({
   options,
   onChange,
+  multiDefaultValues,
+  defaultValue = '',
   isMulti = false,
   isSearch = false,
   disabled = false,
@@ -37,8 +41,10 @@ const Select = ({
   className,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(placeholder);
-  const [tags, setTags] = useState<SelectOptionType[]>([]);
+  const [value, setValue] = useState(defaultValue);
+  const [tags, setTags] = useState<SelectOptionType[]>(
+    isMulti && multiDefaultValues ? multiDefaultValues : []
+  );
   const [filteredOption, setFilteredOption] = useState<SelectOptionType[]>(options);
   const [search, setSearch] = useState('');
   const isEmpty = filteredOption?.length === tags.length;
@@ -115,8 +121,10 @@ const Select = ({
             );
           })}
         </div>
+      ) : value ? (
+        <p className={cx('value')}>{value}</p>
       ) : (
-        value
+        placeholder
       )}
     </div>
   );

@@ -1,15 +1,16 @@
-import useUserInfo from '@/features/user/hooks/use-user-info.tsx';
-import ChiefHome from '@/features/user/components/chief-home';
-import EmployeeHome from '@/features/user/components/employee-home';
+import { useGetUserQuery } from '@/features/user/services';
+import classNames from 'classnames/bind';
+import styles from './styles.module.scss';
+
+const cx = classNames.bind(styles);
 
 const HomePage = () => {
-  const { role } = useUserInfo();
-  return (
-    <>
-      {role === 'employee' && <EmployeeHome />}
+  useGetUserQuery();
 
-      {role === 'chief' && <ChiefHome />}
-    </>
+  return (
+    <div className={cx('wrapper')}>
+      <img src="/images/alfa-home.png" alt="стартовый экран" />
+    </div>
   );
 };
 

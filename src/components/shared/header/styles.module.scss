@@ -19,6 +19,26 @@
   gap: 16px;
 }
 
+.input {
+  min-width: 256px;
+}
+
 .active {
   opacity: $opacity-s;
+}
+
+.list {
+  @include flex-column;
+}
+
+.item {
+  @include text-typing-s;
+  padding: 14px 8px;
+  color: $color-black;
+  transition: $transition-m;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover-link-brn;
+  }
 }

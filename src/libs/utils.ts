@@ -22,7 +22,7 @@ export const formattedDate = (date: number): string => {
     month: '2-digit',
     day: '2-digit',
   };
-  return newDate.toLocaleString('ru-Ru', option);
+  return newDate.toLocaleString('ru-Ru', option).split('.').reverse().join('-');
 };
 
 export const convertTemplateQuery = (query: TemplateQueryType): string => {

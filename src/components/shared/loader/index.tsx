@@ -5,16 +5,17 @@ const cx = classNames.bind(styles);
 
 type LoaderProps = {
   size?: 's' | 'm' | 'l' | 'xl';
+  className?: string;
 };
 
-const Loader = ({ size = 'm' }: LoaderProps) => {
-  const classes = cx('loader', size);
+const Loader = ({ size = 'm', className }: LoaderProps) => {
+  const classes = cx('wrapper', [className]);
 
   return (
-    <div role="status" className={cx('wrapper')}>
+    <div role="status" className={classes}>
       <svg
         aria-hidden="true"
-        className={classes}
+        className={cx('loader', size)}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

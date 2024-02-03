@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authApi } from '../services';
+import { userApi } from '@/features/user/services';
 
 type AuthStateType = {
   token: string | null;
@@ -22,6 +23,10 @@ export const authSlice = createSlice({
     builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, { payload }) => {
       state.token = payload.access_token;
       localStorage.setItem('token', payload.access_token);
+    });
+    builder.addMatcher(userApi.endpoints.getUser.matchRejected, (state) => {
+      state.token = null;
+      localStorage.removeItem('token');
     });
   },
   selectors: {

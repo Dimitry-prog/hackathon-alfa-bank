@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/libs/store.ts';
-import { userSelectors } from '@/features/user/slices';
 import { authSelectors } from '@/features/auth/slices';
+import { userSelectors } from '@/features/user/slices';
 
 const useUserInfo = () => {
   const userInfo = useAppSelector(userSelectors.getCurrentUser);

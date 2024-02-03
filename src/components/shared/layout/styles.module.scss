@@ -1,5 +1,9 @@
 @import "@/shared/styles/styles";
 
+.loader {
+  height: 100vh;
+}
+
 .wrapper {
   @include flex-column;
   max-width: $max-width;

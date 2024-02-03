@@ -1,4 +1,5 @@
-@import "@/shared/styles/styles";
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
 
 .wrapper {
   @include flex-column;
@@ -10,15 +11,12 @@
   }
 }
 
+.empty {
+  @include text-typing-l;
+  color: $color-black;
+}
+
 .content {
   @include flex-column;
   gap: 32px;
-}
-
-.text {
-  @include text-typing-l;
-}
-
-.button {
-  margin-bottom: 36px;
 }

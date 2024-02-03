@@ -7,15 +7,17 @@ import { loginFormSchema } from '@/features/auth/components/login-form/validatio
 import Input from '@/components/ui/input';
 import { useLoginMutation } from '../../services';
 import { LoginRequestType } from '../../types';
+import Loader from '@/components/shared/loader';
 
 const cx = classNames.bind(styles);
 
 const LoginForm = () => {
+  const [login] = useLoginMutation();
+
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
     control,
-    getValues,
   } = useForm<LoginRequestType>({
     defaultValues: {
       username: '',
@@ -23,62 +25,35 @@ const LoginForm = () => {
     },
     resolver: zodResolver(loginFormSchema),
   });
-  const [login] = useLoginMutation();
-  const username = getValues('username');
 
-  const onSubmit: SubmitHandler<LoginRequestType> = async (credentials) => {
+  const onSubmit: SubmitHandler<LoginRequestType> = async (data) => {
+    const credentials = `username=${data.username}&password=${data.password}`;
     await login(credentials);
-  };
-  const getTitle = (username: string) => {
-    if (username.length > 0) {
-      return username;
-    } else {
-      return 'Представьтесь и входите скорее';
-    }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cx('form')}>
-      <h2>{getTitle(username)}</h2>
+      <h2>Представьтесь и входите скорее</h2>
 
-      {!username && (
-        <Controller
-          name="username"
-          control={control}
-          render={({ field }) => (
-            <Input label="" placeholder="email" {...field} error={errors.username?.message} />
-          )}
-        />
-      )}
-      {!!username && (
-        <Controller
-          name="password"
-          control={control}
-          render={({ field }) => (
-            <Input label="" placeholder="Пароль" {...field} error={errors.password?.message} />
-          )}
-        />
-      )}
-      {!username && (
-        <Button
-          variant="primary"
-          type="submit"
-          disabled={isSubmitting}
-          className={cx('button-auth')}
-        >
-          {isSubmitting ? 'Поиск...' : 'Продолжить'}
-        </Button>
-      )}
-      {!!username && (
-        <Button
-          type="submit"
-          variant="accent"
-          disabled={isSubmitting}
-          className={cx('button-auth')}
-        >
-          {isSubmitting ? 'Входим...' : 'Войти'}
-        </Button>
-      )}
+      <Controller
+        name="username"
+        control={control}
+        render={({ field }) => (
+          <Input label="" placeholder="email" {...field} error={errors.username?.message} />
+        )}
+      />
+
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <Input label="" placeholder="Пароль" {...field} error={errors.password?.message} />
+        )}
+      />
+
+      <Button variant="accent" type="submit" disabled={isSubmitting} className={cx('button-auth')}>
+        {isSubmitting ? <Loader size="s" /> : 'Вход'}
+      </Button>
     </form>
   );
 };
