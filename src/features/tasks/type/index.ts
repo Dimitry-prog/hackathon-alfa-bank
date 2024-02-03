@@ -1,3 +1,5 @@
+import { SkillType } from '@/features/template/types';
+
 export type TaskType = {
   id: number;
   title: string;
@@ -7,7 +9,8 @@ export type TaskType = {
   type: TypesType;
   status: StatusesType;
   description: string;
-  skills: string;
+  skills: SkillType[];
+  link: string;
   chief_comment: string;
   employee_comment: string;
 };

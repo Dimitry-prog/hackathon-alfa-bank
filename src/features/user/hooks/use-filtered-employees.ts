@@ -8,7 +8,6 @@ export const useFilteredEmployees = () => {
   const [filteredEmployees, setFilteredEmployees] = useState<EmployeeType[]>([]);
   const { data, isLoading } = useGetEmployeesQuery();
   const search = useAppSelector(userSelectors.getSearchQuery);
-  console.log('search in filter', search);
 
   useEffect(() => {
     setFilteredEmployees(

@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import { useEffect, useState } from 'react';
 import { Calendar } from '@alfalab/core-components-calendar';
-import { ControllerRenderProps } from 'react-hook-form';
 import Dropdown from '@/components/ui/dropdown';
 import { formattedDate } from '@/libs/utils.ts';
 
@@ -16,22 +15,6 @@ type DatePickerProps = {
   placeholder?: string;
   error?: string;
   className?: string;
-  field?: ControllerRenderProps<{
-    title: string;
-    start_date: number;
-    deadline: number;
-    type: {
-      id: string;
-      value: string;
-    };
-    status: {
-      id: string;
-      value: string;
-    };
-    description: string;
-    skills: string;
-    comment: string;
-  }>;
 };
 
 const DatePicker = ({
@@ -44,7 +27,7 @@ const DatePicker = ({
   className,
 }: DatePickerProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [date, setDate] = useState(placeholder);
+  const [date, setDate] = useState('');
   const classes = cx('calendar', [className]);
 
   const handleOptionClick = () => {
@@ -74,7 +57,7 @@ const DatePicker = ({
         disabled && 'trigger_disabled'
       )}
     >
-      {date}
+      {date ? <p className={cx('value')}>{date}</p> : placeholder}
     </button>
   );
 

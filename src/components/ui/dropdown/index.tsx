@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import { ReactNode, useEffect, useRef } from 'react';
+import { CSSProperties, ReactNode, useEffect, useRef } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -10,9 +10,10 @@ type DropdownProps = {
   onClose: () => void;
   children?: ReactNode;
   className?: string;
+  style?: CSSProperties | undefined;
 };
 
-const Dropdown = ({ isOpen, trigger, onClose, children, className }: DropdownProps) => {
+const Dropdown = ({ isOpen, trigger, onClose, children, className, style }: DropdownProps) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const classes = cx('wrapper', [className]);
 
@@ -35,7 +36,9 @@ const Dropdown = ({ isOpen, trigger, onClose, children, className }: DropdownPro
     <div ref={dropdownRef} className={classes}>
       {trigger}
 
-      <div className={cx('content', isOpen && 'open')}>{children}</div>
+      <div className={cx('content', isOpen && 'open')} style={style}>
+        {children}
+      </div>
     </div>
   );
 };

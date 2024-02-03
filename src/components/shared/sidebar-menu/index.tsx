@@ -10,7 +10,6 @@ type SidebarMenuProps = {
   role: UserRoleType;
 };
 const SidebarMenu = ({ role }: SidebarMenuProps) => {
-  console.log(role);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -33,7 +32,10 @@ const SidebarMenu = ({ role }: SidebarMenuProps) => {
             .filter((rol) => rol.role === role)[0]
             ?.links?.map((link) => (
               <li key={link.id}>
-                <Link to={link.href} className={cx('link', pathname === link.href && 'active')}>
+                <Link
+                  to={link.href}
+                  className={cx('link', pathname.includes(link.href) && 'active')}
+                >
                   <img src={link.imgSrc} alt={link.label} className={cx('icon')} />
                   {link.label}
                 </Link>

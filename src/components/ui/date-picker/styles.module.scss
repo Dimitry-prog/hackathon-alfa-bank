@@ -34,6 +34,10 @@
     right: 8px;
   }
 
+  &:hover {
+    background-color: $color-hover-link-brn;
+  }
+
   &_active {
     border: 1px solid $color-black;
     background-color: $color-white;
@@ -47,7 +51,15 @@
   &_disabled {
     opacity: $opacity-m;
     cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-filed-grey-default;
+    }
   }
+}
+
+.value {
+  color: $color-black;
 }
 
 .error {

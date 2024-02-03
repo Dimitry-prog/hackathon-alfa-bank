@@ -13,6 +13,8 @@ import ChiefHome from '@/features/user/components/chief-home';
 import TemplatePage from '@/pages/template';
 import CreateTemplate from '@/pages/template/components/create-template';
 import SingleTemplate from '@/pages/template/components/single-template';
+import EmployeeHome from '@/features/user/components/employee-home';
+import EditTaskPage from '@/pages/edit-task';
 
 function App() {
   const { token } = useUserInfo();
@@ -24,10 +26,17 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="info" element={<InfoPage />} />
-          <Route path="request-task" element={<RequestTaskPage />} />
+
+          <Route path="pdp">
+            <Route index element={<EmployeeHome />} />
+            <Route path="request" element={<RequestTaskPage />} />
+            <Route path=":id/edit" element={<EditTaskPage />} />
+          </Route>
+
           <Route path="template" element={<TemplatePage />} />
           <Route path="template/create" element={<CreateTemplate />} />
           <Route path="template/:id" element={<SingleTemplate />} />
+
           <Route path="employees">
             <Route index element={<ChiefHome />} />
             <Route path=":employeeId" element={<SingleEmployeePage />} />

@@ -35,6 +35,10 @@
     right: 8px;
   }
 
+  &:hover {
+    background-color: $color-hover-link-brn;
+  }
+
   &_active {
     border-color: $color-black;
     background-color: $color-white;
@@ -52,7 +56,15 @@
   &_disabled {
     opacity: $opacity-m;
     cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-filed-grey-default;
+    }
   }
+}
+
+.value {
+  color: $color-black;
 }
 
 .container {
@@ -117,7 +129,6 @@
   &_active {
     background-color: $color-hover-secondary-btn;
   }
-
 
   &_del {
     width: 0;

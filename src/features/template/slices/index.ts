@@ -17,7 +17,7 @@ const initialState: TemplateStateType = {
     type: '',
     creator: '',
   },
-  signal: true,
+  signal: false,
 };
 
 export const templateSlice = createSlice({

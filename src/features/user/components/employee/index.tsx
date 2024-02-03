@@ -11,7 +11,6 @@ type EmployeeProps = {
   last_name: string;
   patronymic_name?: string | null;
   position: string;
-  photo?: string;
   pdp: {
     goal: string;
     deadline: string;
@@ -21,12 +20,12 @@ type EmployeeProps = {
   };
 };
 
-const Employee = ({ id, first_name, last_name, position, photo, pdp }: EmployeeProps) => {
+const Employee = ({ id, first_name, last_name, position, pdp }: EmployeeProps) => {
   return (
     <li key={id} className={cx('employee')}>
       <div className={cx('employee__container')}>
         <div className={cx('employee__data')}>
-          <Avatar src={photo} />
+          <Avatar />
           <div className={cx('employee__info')}>
             <h4 className={cx('employee__name')}>
               {first_name} {last_name}

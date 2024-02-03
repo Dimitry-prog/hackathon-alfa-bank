@@ -3,8 +3,8 @@ import { StatusesType, TaskType, TypesType, UpdateTaskType } from '../type';
 
 export const tasksApi = api.injectEndpoints({
   endpoints: (builder) => ({
-    getTask: builder.query<TaskType, number>({
-      query: (id) => `/task/${id}`,
+    getTaskById: builder.query<TaskType, string>({
+      query: (id) => `/api/v1/task/${id}`,
     }),
     updateTask: builder.mutation<TaskType, UpdateTaskType>({
       query: (data) => ({
@@ -13,9 +13,9 @@ export const tasksApi = api.injectEndpoints({
         body: data.body,
       }),
     }),
-    createTask: builder.mutation<TaskType, TaskType>({
+    createTask: builder.mutation<TaskType, Partial<TaskType>>({
       query: (data) => ({
-        url: `/task`,
+        url: `/api/v1/task`,
         method: 'POST',
         body: data,
       }),
@@ -30,7 +30,7 @@ export const tasksApi = api.injectEndpoints({
 });
 
 export const {
-  useGetTaskQuery,
+  useGetTaskByIdQuery,
   useUpdateTaskMutation,
   useCreateTaskMutation,
   useGetStatusesQuery,

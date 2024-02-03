@@ -25,7 +25,7 @@ const EmployeeList2 = ({
     <table className={cx('wrapper')}>
       <thead className={cx('head')}>
         <tr>
-          <th />
+          {isView && <th />}
           <th>Сотрудник</th>
           <th>Состояние ИПР</th>
           <th>Срок ИПР</th>
@@ -35,17 +35,19 @@ const EmployeeList2 = ({
       <tbody className={cx('body')}>
         {employees.map((employee) => (
           <tr key={employee.id} className={cx('rows')}>
-            <td>
-              <Checkbox
-                name={employee.id.toString()}
-                checked={Boolean(employeeIds.find((id) => id === employee.id))}
-                onChange={() => onChange(employee.id)}
-                className={cx('checkbox')}
-              />
-            </td>
+            {isView && (
+              <td>
+                <Checkbox
+                  name={employee.id.toString()}
+                  checked={Boolean(employeeIds.find((id) => id === employee.id))}
+                  onChange={() => onChange(employee.id)}
+                  className={cx('checkbox')}
+                />
+              </td>
+            )}
             <td>
               <div className={cx('person')}>
-                <Avatar src={employee.photo} />
+                <Avatar />
                 <div className={cx('info')}>
                   <h5>
                     {employee.first_name} {employee.last_name}

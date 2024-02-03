@@ -8,14 +8,13 @@ type UserInfoProps = {
   first_name: string;
   last_name: string;
   position: string;
-  photo?: string;
 };
 
-const UserInfo = ({ first_name, last_name, position, photo }: UserInfoProps) => {
+const UserInfo = ({ first_name, last_name, position }: UserInfoProps) => {
   return (
     <section className={cx('wrapper')}>
       <div className={cx('info')}>
-        <Avatar size="m" src={photo} />
+        <Avatar size="m" />
 
         <div className={cx('name')}>
           <h3>{last_name}</h3>

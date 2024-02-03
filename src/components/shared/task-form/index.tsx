@@ -9,15 +9,12 @@ import { TaskFormDataType, taskFormSchema } from '@/components/shared/task-form/
 import Select from '@/components/ui/select';
 import { statusTaskMock, typesTaskMock } from '@/libs/constants.ts';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/libs/store.ts';
-import { userActions } from '@/features/user/slices';
 import DatePicker from '@/components/ui/date-picker';
 
 const cx = classNames.bind(styles);
 
 const TaskForm = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
@@ -46,17 +43,6 @@ const TaskForm = () => {
 
   const onSubmit: SubmitHandler<TaskFormDataType> = (data) => {
     console.log(data);
-    const task = {
-      title: data.title,
-      start_date: data.start_date,
-      deadline: data.deadline,
-      type: data.type.value,
-      status: data.type.value,
-      description: data.description,
-      skills: data.skills,
-      comment: data.comment,
-    };
-    dispatch(userActions.setUserTask(task));
     navigate(-1);
   };
 
