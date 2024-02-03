@@ -15,7 +15,7 @@ const UserInfo = ({ first_name, last_name, position, photo }: UserInfoProps) => 
   return (
     <section className={cx('wrapper')}>
       <div className={cx('info')}>
-        <Avatar size="m" src={photo} />
+        <Avatar size="m" src={`${import.meta.env.VITE_MEDIA_HOST}/${photo}`} />
 
         <div className={cx('name')}>
           <h3>{last_name}</h3>

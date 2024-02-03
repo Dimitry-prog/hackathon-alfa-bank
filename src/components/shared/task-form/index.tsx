@@ -7,58 +7,100 @@ import Button from '@/components/ui/button';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TaskFormDataType, taskFormSchema } from '@/components/shared/task-form/validation';
 import Select from '@/components/ui/select';
-import { statusTaskMock, typesTaskMock } from '@/libs/constants.ts';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/libs/store.ts';
-import { userActions } from '@/features/user/slices';
 import DatePicker from '@/components/ui/date-picker';
+import { useProperties } from '@/shared/hooks/use-properties.ts';
+import { useCreateTaskMutation, useUpdateTaskMutation } from '@/features/tasks/servises';
+import { CreateTaskType, TaskType } from '@/features/tasks/type';
+import { formatDate } from '@/libs/utils.ts';
 
 const cx = classNames.bind(styles);
 
-const TaskForm = () => {
+type TaskFormProps = {
+  pdpId?: number;
+  initValues?: TaskType;
+};
+
+const TaskForm = ({ pdpId, initValues }: TaskFormProps) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const { statuses, types, isLoading } = useProperties();
+  const [createTask] = useCreateTaskMutation();
+  const [updateTask] = useUpdateTaskMutation();
 
   const {
     handleSubmit,
     formState: { errors, isSubmitting },
+    getValues,
     reset,
     control,
   } = useForm<TaskFormDataType>({
     defaultValues: {
-      title: '',
-      start_date: undefined,
-      deadline: undefined,
+      title: initValues?.title || '',
+      start_date: initValues?.starting_date ? Date.parse(initValues.starting_date) : undefined,
+      deadline: initValues?.deadline ? Date.parse(initValues.deadline) : undefined,
       type: {
-        id: '',
-        value: '',
+        id: initValues?.type.id || 0,
+        value: initValues?.type.value || '',
       },
       status: {
-        id: '',
-        value: '',
+        id: initValues?.status.id || 0,
+        value: initValues?.status.value || '',
       },
-      description: '',
-      skills: '',
-      comment: '',
+      description: initValues?.description || '',
+      skills: initValues?.skills ? initValues.skills.join(', ') : '',
+      comment: initValues?.chief_comment || '',
     },
     resolver: zodResolver(taskFormSchema),
   });
 
-  const onSubmit: SubmitHandler<TaskFormDataType> = (data) => {
-    console.log(data);
-    const task = {
+  console.log('values:', getValues());
+
+  const onSubmit: SubmitHandler<TaskFormDataType> = async (data) => {
+    const transformedData: CreateTaskType = {
+      pdp_id: 0,
       title: data.title,
-      start_date: data.start_date,
-      deadline: data.deadline,
-      type: data.type.value,
-      status: data.type.value,
       description: data.description,
-      skills: data.skills,
-      comment: data.comment,
+      deadline: formatDate(new Date(data.deadline)),
     };
-    dispatch(userActions.setUserTask(task));
-    navigate(-1);
+
+    if (pdpId) {
+      transformedData.pdp_id = Number(pdpId);
+    }
+
+    if (data?.type?.id) {
+      transformedData.type_id = data.type.id;
+    }
+
+    if (data?.start_date) {
+      transformedData.starting_date = formatDate(new Date(data.start_date));
+    }
+
+    if (data.skills?.trim()) {
+      transformedData.skills = data.skills.split(',').map((it) => it.trim());
+    }
+
+    if (data.comment?.trim()) {
+      transformedData.chief_comment = data.comment;
+    }
+
+    if (data?.status?.id) {
+      transformedData.status_id = data.status.id;
+    }
+    try {
+      if (initValues) {
+        await updateTask({ body: transformedData, id: initValues.id });
+      } else {
+        await createTask(transformedData);
+      }
+      navigate(-1);
+    } catch (e) {
+      console.log('Что-то пошло не так');
+    }
   };
+
+  if (isLoading) {
+    return <span>Загрузка...</span>;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cx('wrapper')}>
@@ -111,10 +153,10 @@ const TaskForm = () => {
           control={control}
           render={({ field }) => (
             <Select
-              options={typesTaskMock}
+              options={types}
               onChange={field.onChange}
               label="Тип задачи"
-              placeholder="Выберите тип задачи"
+              placeholder={field.value.value || 'Выберите тип задачи'}
               error={errors.type?.value?.message}
             />
           )}
@@ -125,10 +167,10 @@ const TaskForm = () => {
           control={control}
           render={({ field }) => (
             <Select
-              options={statusTaskMock}
+              options={statuses}
               onChange={field.onChange}
               label="Статус"
-              placeholder="Выберите статус"
+              placeholder={field.value.value || 'Выберите статус'}
               error={errors.status?.value?.message}
             />
           )}
@@ -176,7 +218,7 @@ const TaskForm = () => {
 
       <div className={cx('buttons')}>
         <Button type="submit" variant="accent" disabled={isSubmitting}>
-          {isSubmitting ? 'Сохраняем задачу...' : 'Создать задачу'}
+          {isSubmitting ? 'Сохраняем задачу...' : initValues ? 'Изменить' : 'Создать задачу'}
         </Button>
 
         <Button

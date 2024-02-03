@@ -7,25 +7,29 @@ export type TaskType = {
   type: TypesType;
   status: StatusesType;
   description: string;
-  skills: string;
+  skills: string[];
   chief_comment: string;
   employee_comment: string;
 };
 
+export type CreateTaskType = {
+  title: string;
+  pdp_id: number;
+  description: string;
+
+  type_id?: number;
+  starting_date?: string;
+  deadline?: string;
+  status_id?: number;
+  skills?: string[];
+  link?: string;
+  chief_comment?: string;
+  employee_comment?: string;
+};
+
 export type UpdateTaskType = {
   id: number;
-  pdp_id: number;
-  body: {
-    title: string;
-    starting_date: string;
-    deadline: string;
-    type_id: number;
-    status_id: number;
-    description: string;
-    skills: string;
-    chief_comment: string;
-    employee_comment: string;
-  };
+  body: Omit<CreateTaskType, 'pdp_id'>;
 };
 
 export type StatusesType = {

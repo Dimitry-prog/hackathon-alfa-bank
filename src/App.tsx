@@ -31,7 +31,7 @@ function App() {
           <Route path="employees">
             <Route index element={<ChiefHome />} />
             <Route path=":employeeId" element={<SingleEmployeePage />} />
-            <Route path=":employeeId/edit" element={<EditTaskForEmployeePage />} />
+            <Route path=":employeeId/edit/:taskId" element={<EditTaskForEmployeePage />} />
             <Route path=":employeeId/create" element={<CreateTaskForEmployeePage />} />
           </Route>
         </Route>

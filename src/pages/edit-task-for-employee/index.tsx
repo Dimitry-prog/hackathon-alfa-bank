@@ -6,10 +6,14 @@ import UserGoal from '@/components/shared/user-goal';
 import { useEmployeeInfo } from '@/features/user/hooks/use-employee-info';
 import { useGetPdpByIdQuery } from '@/features/pdp/services';
 import { usePdpInfo } from '@/features/pdp/hooks/use-pdp-info';
+import { useParams } from 'react-router-dom';
+import { useGetTaskById } from '@/shared/hooks/use-get-task-by-id.ts';
 
 const cx = classNames.bind(styles);
 
 const EditTaskForEmployeePage = () => {
+  const { taskId = '0' } = useParams();
+  const { task } = useGetTaskById(Number(taskId));
   const { currentEmployee } = useEmployeeInfo();
   useGetPdpByIdQuery(currentEmployee?.pdp.id || 0, { skip: !currentEmployee?.pdp?.id });
   const pdpInfo = usePdpInfo();
@@ -33,7 +37,7 @@ const EditTaskForEmployeePage = () => {
             photo={currentEmployee?.photo || ''}
           />
         </div>
-        <TaskForm />
+        <TaskForm pdpId={pdpInfo?.id} initValues={task} />
       </div>
     </section>
   );

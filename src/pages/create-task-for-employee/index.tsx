@@ -34,7 +34,7 @@ const CreateTaskForEmployeePage = () => {
             photo={currentEmployee?.photo || ''}
           />
         </div>
-        <TaskForm />
+        <TaskForm pdpId={currentEmployee?.pdp.id} />
       </div>
     </section>
   );

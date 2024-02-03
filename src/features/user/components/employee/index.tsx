@@ -26,7 +26,7 @@ const Employee = ({ id, first_name, last_name, position, photo, pdp }: EmployeeP
     <li key={id} className={cx('employee')}>
       <div className={cx('employee__container')}>
         <div className={cx('employee__data')}>
-          <Avatar src={photo} />
+          <Avatar src={`${import.meta.env.VITE_MEDIA_HOST}/${photo}`} />
           <div className={cx('employee__info')}>
             <h4 className={cx('employee__name')}>
               {first_name} {last_name}

@@ -36,7 +36,7 @@ const TasksTable = ({ tasks }: TasksTableProps) => {
               </Link>
             </td>
             <td className={cx('row')}>
-              <Link to="edit" className={cx('edit')} />
+              <Link to={`edit/${task.id}`} className={cx('edit')} />
             </td>
           </tr>
         ))}
