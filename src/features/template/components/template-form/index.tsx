@@ -35,7 +35,7 @@ const TemplateForm = () => {
     },
     resolver: zodResolver(templateFormSchema),
   });
-
+  console.log(errors);
   const onSubmit: SubmitHandler<TemplateFormDataType> = async (data) => {
     const template = {
       title: data.title,

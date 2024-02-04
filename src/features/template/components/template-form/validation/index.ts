@@ -10,13 +10,13 @@ export const templateFormSchema = z.object({
   direction: z
     .object({
       value: z.string(),
-      id: z.string(),
+      id: z.number(),
     })
     .optional(),
   type: z
     .object({
       value: z.string(),
-      id: z.string(),
+      id: z.number(),
     })
     .optional(),
   skills: z
@@ -29,7 +29,7 @@ export const templateFormSchema = z.object({
   grade: z
     .object({
       value: z.string(),
-      id: z.string(),
+      id: z.number(),
     })
     .optional(),
   description: z
@@ -42,7 +42,7 @@ export const templateFormSchema = z.object({
   duration: z
     .object({
       value: z.string(),
-      id: z.string(),
+      id: z.number(),
     })
     .optional(),
   recommendation: z.string().optional(),
