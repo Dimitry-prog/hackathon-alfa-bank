@@ -1,6 +1,7 @@
 import { EmployeeType, UserType } from '@/features/user/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userApi } from '../services';
+import { authApi } from '@/features/auth/services';
 
 type UserStateType = {
   user: UserType | null;
@@ -10,7 +11,7 @@ type UserStateType = {
 
 const initialState: UserStateType = {
   user: null,
-  employees: [],
+  employees: JSON.parse(localStorage.getItem('employees') ?? '[]'),
   searchQuery: '',
 };
 
@@ -26,8 +27,16 @@ export const userSlice = createSlice({
     builder.addMatcher(userApi.endpoints.getUser.matchFulfilled, (state, { payload }) => {
       state.user = payload;
     });
+    builder.addMatcher(userApi.endpoints.getUser.matchRejected, (state) => {
+      state.user = null;
+      localStorage.removeItem('token');
+    });
     builder.addMatcher(userApi.endpoints.getEmployees.matchFulfilled, (state, { payload }) => {
       state.employees = payload;
+      localStorage.setItem('employees', JSON.stringify(payload));
+    });
+    builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
+      state.user = null;
     });
   },
   selectors: {

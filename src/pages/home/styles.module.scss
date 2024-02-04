@@ -4,4 +4,9 @@
 .wrapper {
   display: flex;
   gap: 16px;
+
+  & > img {
+    object-fit: cover;
+    width: 100%;
+  }
 }

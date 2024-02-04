@@ -1,5 +1,5 @@
 import { api } from '@/libs/api.ts';
-import { StatusesType, TaskType, TypesType, UpdateTaskType } from '../type';
+import { SetTaskToTemplateRequestType, TaskType, UpdateTaskType } from '../type';
 
 export const tasksApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,23 +8,33 @@ export const tasksApi = api.injectEndpoints({
     }),
     updateTask: builder.mutation<TaskType, UpdateTaskType>({
       query: (data) => ({
-        url: `/task/${data.id}`,
+        url: `/api/v1/task/${data.taskId}`,
         method: 'PATCH',
         body: data.body,
       }),
     }),
-    createTask: builder.mutation<TaskType, Partial<TaskType>>({
+    createTask: builder.mutation<
+      TaskType,
+      Partial<
+        Omit<TaskType, 'skills'> & {
+          type_id: number;
+          status_id: number;
+          skills: string[];
+        }
+      >
+    >({
       query: (data) => ({
         url: `/api/v1/task`,
         method: 'POST',
         body: data,
       }),
     }),
-    getStatuses: builder.query<StatusesType[], void>({
-      query: () => `/api/v1/task_properties/statuses`,
-    }),
-    getTypes: builder.query<TypesType[], void>({
-      query: () => `/api/v1/task_properties/types`,
+    setTaskToTemplate: builder.mutation<null, SetTaskToTemplateRequestType>({
+      query: (body) => ({
+        url: `/api/v1/template/create_from_task`,
+        method: 'POST',
+        body,
+      }),
     }),
   }),
 });
@@ -33,6 +43,5 @@ export const {
   useGetTaskByIdQuery,
   useUpdateTaskMutation,
   useCreateTaskMutation,
-  useGetStatusesQuery,
-  useGetTypesQuery,
+  useSetTaskToTemplateMutation,
 } = tasksApi;

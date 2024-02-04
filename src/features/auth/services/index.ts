@@ -14,7 +14,7 @@ export const authApi = api.injectEndpoints({
         body,
       }),
     }),
-    logout: builder.mutation({
+    logout: builder.mutation<void, void>({
       query: () => ({
         url: `/auth/jwt/logout`,
         method: 'POST',
@@ -30,4 +30,4 @@ export const authApi = api.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useLogoutMutation } = authApi;
