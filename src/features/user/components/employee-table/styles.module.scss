@@ -114,3 +114,22 @@
   opacity: 0;
   transition: $transition-m;
 }
+
+.emp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url('/icons/sort.svg');
+  background-repeat: no-repeat;
+  transition: $transition-m;
+
+  &_desc {
+    transform: rotate(180deg);
+  }
+}

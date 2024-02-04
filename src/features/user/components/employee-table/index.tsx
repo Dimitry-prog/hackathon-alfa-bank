@@ -5,6 +5,7 @@ import Avatar from '@/components/shared/avatar';
 import ProgressBar from '@/components/shared/progress-bar';
 import Checkbox from '@/components/ui/checkbox';
 import { EmployeeType, UserRoleType } from '@/features/user/types';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -23,19 +24,44 @@ const EmployeeTable = ({
   isTemplate = false,
   role = 'employee',
 }: EmployeeTableProps) => {
+  const [filteredEmployees, setFilteredEmployees] = useState<EmployeeType[]>(employees);
+  const [sortConfig, setSortConfig] = useState<'asc' | 'desc'>('asc');
+
+  const handleSortingByDone = () => {
+    const filteredDone = [...filteredEmployees].sort((a, b) => {
+      if (sortConfig === 'asc') {
+        return a.pdp.done - b.pdp.done;
+      } else {
+        return b.pdp.done - a.pdp.done;
+      }
+    });
+
+    setSortConfig(sortConfig === 'asc' ? 'desc' : 'asc');
+    setFilteredEmployees(filteredDone);
+  };
+
   return (
     <table className={cx('wrapper')}>
       <thead className={cx('head')}>
         <tr>
           {isTemplate && <th />}
           <th>Сотрудник</th>
-          <th>Состояние ИПР</th>
+          <th>
+            <div className={cx('emp')}>
+              Состояние ИПР
+              <button
+                onClick={handleSortingByDone}
+                type="button"
+                className={cx('sort', sortConfig === 'asc' && 'sort_desc')}
+              />
+            </div>
+          </th>
           <th>Срок ИПР</th>
           {!isTemplate && <th />}
         </tr>
       </thead>
       <tbody className={cx('body')}>
-        {employees.map((employee) => (
+        {filteredEmployees.map((employee) => (
           <tr key={employee.id} className={cx('rows')}>
             {isTemplate && (
               <td>
