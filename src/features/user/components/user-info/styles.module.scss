@@ -1,6 +1,5 @@
-@import "@/shared/styles/styles";
-
-@import "@/shared/styles/styles";
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
 
 .wrapper {
   max-width: 384px;
@@ -22,13 +21,13 @@
   @include flex-column;
   gap: 4px;
 
-  &>h3,
+  & > h3,
   p {
     @include text-typing-l;
     color: $color-real-black;
   }
 
-  &>span {
+  & > span {
     @include text-typing-l;
     margin-top: 4px;
     color: $color-text;
