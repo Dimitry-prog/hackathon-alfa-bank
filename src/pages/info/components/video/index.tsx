@@ -9,7 +9,7 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 const Video = () => {
-  const [tabName, setTabName] = useState<'chief' | 'single-employee'>('chief');
+  const [tabName, setTabName] = useState<'chief' | 'employee'>('chief');
   const dispatch = useAppDispatch();
 
   const handleVideoModal = () => {
@@ -30,8 +30,8 @@ const Video = () => {
               Я руководитель
             </Button>
             <Button
-              onClick={() => setTabName('single-employee')}
-              variant={tabName === 'single-employee' ? 'primary' : 'secondary'}
+              onClick={() => setTabName('employee')}
+              variant={tabName === 'employee' ? 'primary' : 'secondary'}
               size="s"
             >
               Я сотрудник
@@ -40,7 +40,7 @@ const Video = () => {
 
           <div
             onClick={handleVideoModal}
-            className={cx('video', tabName === 'single-employee' && 'video_employee')}
+            className={cx('video', tabName === 'employee' && 'video_employee')}
           />
         </div>
       </section>

@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/libs/store.ts';
 import { modalActions, modalSelectors } from '@/shared/slices/modal-slice.ts';
 
 export const useModal = () => {
-  const modalInfo = useAppSelector(modalSelectors.getModalInfo);
+  const modal = useAppSelector(modalSelectors.getModal);
   const dispatch = useAppDispatch();
 
   const handleCloseModal = () => {
@@ -13,9 +13,14 @@ export const useModal = () => {
     dispatch(modalActions.openModal(name));
   };
 
+  const handleSetModalInfo = (data: unknown) => {
+    dispatch(modalActions.setModalInfo(data));
+  };
+
   return {
-    ...modalInfo,
+    ...modal,
     onOpen: handleOpenModal,
     onClose: handleCloseModal,
+    setInfo: handleSetModalInfo,
   };
 };

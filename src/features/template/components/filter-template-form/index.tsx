@@ -32,8 +32,8 @@ const FilterTemplateForm = () => {
   const onSubmit: SubmitHandler<FilterTemplateFormDataType> = (data) => {
     const query: TemplateQueryType = {
       q: data.title,
-      direction: data?.direction?.value || '',
-      type: data.type?.value || '',
+      direction: data?.direction?.id || '',
+      type: data.type?.id || '',
       creator: data.creator?.value || '',
       skills: data.skills?.map((skill) => skill.id) || [],
       grade: data.grade?.map((grade) => grade.id) || [],

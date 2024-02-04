@@ -12,6 +12,7 @@ export const tasksApi = api.injectEndpoints({
         method: 'PATCH',
         body: data.body,
       }),
+      invalidatesTags: (result) => [{ type: 'Pdp', id: result?.pdp_id }],
     }),
     createTask: builder.mutation<
       TaskType,
@@ -28,6 +29,7 @@ export const tasksApi = api.injectEndpoints({
         method: 'POST',
         body: data,
       }),
+      invalidatesTags: (result) => [{ type: 'Pdp', id: result?.pdp_id }],
     }),
     setTaskToTemplate: builder.mutation<null, SetTaskToTemplateRequestType>({
       query: (body) => ({

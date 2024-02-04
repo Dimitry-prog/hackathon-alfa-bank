@@ -34,6 +34,7 @@ export const templateApi = api.injectEndpoints({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Employees'],
     }),
   }),
 });

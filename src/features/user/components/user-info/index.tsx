@@ -1,12 +1,17 @@
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
-import useUserInfo from '@/features/user/hooks/use-user-info.tsx';
 import Avatar from '@/components/shared/avatar';
+import { useFilteredEmployees } from '@/features/user/hooks/use-filtered-employees.ts';
 
 const cx = classNames.bind(styles);
 
-const UserInfo = () => {
-  const { first_name, last_name, position } = useUserInfo();
+type UserInfoProps = {
+  userId: number;
+};
+
+const UserInfo = ({ userId }: UserInfoProps) => {
+  const { employees } = useFilteredEmployees();
+  const user = employees.find((employee) => employee.id === userId);
 
   return (
     <div className={cx('wrapper')}>
@@ -14,9 +19,9 @@ const UserInfo = () => {
         <Avatar size="m" />
 
         <div className={cx('name')}>
-          <h3>{last_name}</h3>
-          <p>{first_name}</p>
-          <span>{position}</span>
+          <h3>{user?.last_name}</h3>
+          <p>{user?.first_name}</p>
+          <span>{user?.position}</span>
         </div>
       </div>
     </div>

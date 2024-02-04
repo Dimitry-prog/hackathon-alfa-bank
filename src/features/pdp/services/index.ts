@@ -8,6 +8,7 @@ export const pdpApi = api.injectEndpoints({
     }),
     getPdpById: builder.query<PdpType, string>({
       query: (pdpId) => `/api/v1/pdp/${pdpId}`,
+      providesTags: (result) => [{ type: 'Pdp', id: result?.id }],
     }),
     updatePdp: builder.mutation<PdpType, UpdatePdpType>({
       query: (data) => ({

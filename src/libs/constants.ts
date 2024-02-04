@@ -393,7 +393,7 @@ export const card = [
   },
   {
     id: '2',
-    imgSrc: '/icons/plan-single-employee.svg',
+    imgSrc: '/icons/plan-employee.svg',
     title: 'План развития сотрудника',
     about: 'Как составить стратегию для команды',
   },

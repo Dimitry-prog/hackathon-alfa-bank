@@ -16,6 +16,7 @@ import { TaskType } from '@/features/tasks/type';
 import { UserRoleType } from '@/features/user/types';
 import { TaskFormDataType, taskFormSchema } from '@/features/tasks/components/task-form/validation';
 import { useProperties } from '@/features/properties/hooks/use-properties.ts';
+import { useModal } from '@/shared/hooks/use-modal.ts';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +30,7 @@ type TaskFormProps = {
 const TaskForm = ({ pdpId, task, type, role }: TaskFormProps) => {
   const navigate = useNavigate();
   const { statuses, types, skills, isLoading } = useProperties();
+  const { setInfo, onOpen } = useModal();
   const employeeStatuses =
     type === 'create' && role === 'employee'
       ? statuses.filter((status) => status.value !== 'Исполнена')
@@ -107,8 +109,12 @@ const TaskForm = ({ pdpId, task, type, role }: TaskFormProps) => {
         };
       }
 
-      await createTask(taskData);
-      navigate(-1);
+      await createTask(taskData)
+        .unwrap()
+        .then((res) => {
+          setInfo(res.id);
+          onOpen('saveToTemplate');
+        });
     }
 
     if (type === 'update') {

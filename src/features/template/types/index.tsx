@@ -39,10 +39,10 @@ export type RequestUpdateTemplateType = {
 
 export type TemplateQueryType = {
   q: string;
-  direction: string;
+  direction: number | string;
   skills: number[];
   grade: number[];
-  type: string;
+  type: number | string;
   creator: string;
 };
 

@@ -8,6 +8,13 @@ export const userApi = api.injectEndpoints({
     }),
     getEmployees: builder.query<EmployeeType[], void>({
       query: () => `/api/v1/employees`,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Employees' as const, id })),
+              { type: 'Employees', id: 'LIST' },
+            ]
+          : [{ type: 'Employees', id: 'LIST' }],
     }),
     updateUser: builder.mutation<UserType, UpdateUserType>({
       query: (body) => ({

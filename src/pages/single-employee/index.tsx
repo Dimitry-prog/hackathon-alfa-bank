@@ -25,7 +25,7 @@ const SingleEmployeePage = () => {
           <div className={cx('header')}>
             <UserGoal pdp={pdp} />
 
-            <UserInfo />
+            <UserInfo userId={pdp.user_id} />
           </div>
 
           {pdp.tasks.length > 0 && <TasksTable tasks={pdp.tasks} />}
