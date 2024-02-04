@@ -1,42 +1,40 @@
 @import "@/shared/styles/mixins";
 @import "@/shared/styles/variables";
 
-.menu {
+.wrapper {
   @include flex-column;
+  min-width: 284px;
+  gap: 20px;
 
-  &__title {
+  & > p {
     @include text-typing-s-bold;
-    color: $color-text;
-    letter-spacing: 0.12em;
-    padding: 12px 0;
-  }
-
-  &__container-link {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    margin-bottom: 4px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  &__icons {
-    @include size-icon;
-    margin-right: 8px;
-  }
-
-  &__text {
-    @include text-btn-s;
-
-    &_gray {
-      color: $color-text;
-    }
-  }
-
-  &__text-gray {
-    @include text-btn-s;
+    letter-spacing: 1.92px;
+    text-transform: uppercase;
     color: $color-text;
   }
+}
+
+.link {
+  @include text-btn-s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  color: $color-black;
+  border-radius: $border-radius-m;
+  transition: $transition-m;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover-link-brn;
+  }
+}
+
+.icon {
+  @include size-icon;
+}
+
+.list {
+  @include flex-column;
+  gap: 2px;
 }

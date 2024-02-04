@@ -8,15 +8,14 @@ import Logo from '@/components/shared/logo';
 import Notification from '../notification';
 import Dropdown from '@/components/ui/dropdown';
 import { useState } from 'react';
-import { useAppDispatch } from '@/libs/store.ts';
-import { authActions } from '@/features/auth/slices';
+import { useLogoutMutation } from '@/features/auth/services';
 
 const cx = classNames.bind(styles);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [logout] = useLogoutMutation();
   const { pathname } = useLocation();
-  const dispatch = useAppDispatch();
 
   return (
     <header className={cx('header')}>
@@ -53,7 +52,12 @@ const Header = () => {
           style={{ width: 'max-content' }}
         >
           <ul className={cx('list')}>
-            <li onClick={() => dispatch(authActions.logout())} className={cx('item')}>
+            <li
+              onClick={async () => {
+                await logout();
+              }}
+              className={cx('item')}
+            >
               Выйти из аккаунта
             </li>
           </ul>

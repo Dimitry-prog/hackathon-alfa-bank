@@ -3,13 +3,16 @@ import styles from './styles.module.scss';
 import Button from '@/components/ui/button';
 import { useGetMyPdpQuery } from '@/features/pdp/services';
 import Loader from '@/components/shared/loader';
-import UserGoal2 from '@/components/shared/user-goal-2';
-import TasksTable2 from '@/features/user/components/tasks-table-2';
+import useUserInfo from '@/features/user/hooks/use-user-info.tsx';
+import TasksTable from '@/features/tasks/components/tasks-table';
+import UserGoal from '@/features/user/components/user-goal';
 
 const cx = classNames.bind(styles);
 
 const EmployeeHome = () => {
+  const { role } = useUserInfo();
   const { data: pdp, isLoading } = useGetMyPdpQuery();
+
   return (
     <section className={cx('wrapper')}>
       <h2>Мой индивидуальный план развития</h2>
@@ -20,13 +23,13 @@ const EmployeeHome = () => {
 
       {pdp && (
         <div className={cx('content')}>
-          <UserGoal2 pdp={pdp} />
+          <UserGoal pdp={pdp} />
 
-          <TasksTable2 tasks={pdp.tasks} />
+          <TasksTable tasks={pdp.tasks} role={role} />
         </div>
       )}
 
-      <Button variant="accent" className={cx('button')} href="request">
+      <Button variant="accent" className={cx('button')} href={`${pdp?.id}/tasks/create`}>
         Подать заявку
       </Button>
     </section>

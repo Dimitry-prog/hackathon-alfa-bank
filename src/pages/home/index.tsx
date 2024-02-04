@@ -1,12 +1,9 @@
-import { useGetUserQuery } from '@/features/user/services';
 import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 
 const cx = classNames.bind(styles);
 
 const HomePage = () => {
-  useGetUserQuery();
-
   return (
     <div className={cx('wrapper')}>
       <img src="/images/alfa-home.png" alt="стартовый экран" />

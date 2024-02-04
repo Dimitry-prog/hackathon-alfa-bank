@@ -1,17 +1,17 @@
-@import "@/shared/styles/styles";
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
 
 .wrapper {
   @include flex-column;
-  @include flex-center;
-  gap: 26px;
+  gap: 4px;
 
-  &>div {
-    width: 160px;
+  & > div {
+    width: 100%;
     height: 8px;
     background-color: $color-divider;
     border-radius: $border-radius-m;
 
-    &>span {
+    & > span {
       height: 8px;
       display: block;
       background-color: $color-lime;
@@ -19,7 +19,7 @@
     }
   }
 
-  &>p {
+  & > p {
     @include text-typing-s;
     color: $color-black;
   }

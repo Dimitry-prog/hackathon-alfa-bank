@@ -8,7 +8,7 @@ type LoaderProps = {
   className?: string;
 };
 
-const Loader = ({ size = 'm', className }: LoaderProps) => {
+const Loader = ({ size = 'xl', className }: LoaderProps) => {
   const classes = cx('wrapper', [className]);
 
   return (

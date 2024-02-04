@@ -1,4 +1,5 @@
-@import "@/shared/styles/styles";
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
 
 .wrapper {
   background: rgba(255, 255, 255, 0.20);
@@ -16,7 +17,7 @@
 
     & > a {
       transition: $transition-m;
-      
+
       &:hover {
         opacity: $opacity-m;
       }

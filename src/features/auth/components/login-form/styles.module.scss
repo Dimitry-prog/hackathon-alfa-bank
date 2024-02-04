@@ -1,4 +1,5 @@
-@import "@/shared/styles/styles";
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
 
 .form {
   @include flex-column;
@@ -9,7 +10,7 @@
   background-color: $color-white;
   border-radius: $border-radius-xl;
 
-  &>h2 {
+  & > h2 {
     @include h2-title;
     color: $color-real-black;
   }
