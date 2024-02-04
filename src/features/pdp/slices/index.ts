@@ -4,10 +4,12 @@ import { pdpApi } from '@/features/pdp/services';
 
 type PdpStateType = {
   pdp: PdpType | null;
+  signal: boolean;
 };
 
 const initialState: PdpStateType = {
   pdp: null,
+  signal: false,
 };
 
 export const pdpSlice = createSlice({
@@ -17,6 +19,9 @@ export const pdpSlice = createSlice({
     setPdp: (state, action: PayloadAction<PdpType>) => {
       state.pdp = action.payload;
     },
+    setStartQueryRequest: (state, action: PayloadAction<boolean>) => {
+      state.signal = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(pdpApi.endpoints.getPdpById.matchFulfilled, (state, { payload }) => {
@@ -25,6 +30,7 @@ export const pdpSlice = createSlice({
   },
   selectors: {
     getPdp: (state) => state.pdp,
+    getSignal: (state) => state.signal,
   },
 });
 

@@ -64,25 +64,30 @@ const EmployeeTable = ({
             </td>
             <td>
               <>
-                {!employee.pdp && (
+                {employee.pdp.goal === '' && (
                   <div className={cx('status')}>
-                    <img src="/icons/no-pdp" alt="Нет ИПР" />
+                    <img src="/icons/no-pdp.svg" alt="Нет ИПР" />
                     <p>Нет ИПР</p>
                   </div>
                 )}
-                {employee.pdp && (
+                {employee.pdp.goal !== '' && employee.pdp.total !== 0 && (
                   <ProgressBar
                     step={employee.pdp.done}
                     totalSteps={employee.pdp.total}
                     className={cx('progress')}
                   />
                 )}
+                {employee.pdp.goal !== '' && employee.pdp.total === 0 && (
+                  <div className={cx('status')}>
+                    <img src="/icons/no-pdp.svg" alt="Нет ИПР" />
+                    <p>Нет задач</p>
+                  </div>
+                )}
               </>
             </td>
             <td>
               <div className={cx('deadline', isTemplate && 'deadline_view')}>
-                {employee.pdp.deadline && <p>{employee.pdp.deadline}</p>}
-                {!employee.pdp && <p>нет</p>}
+                {employee.pdp.goal === '' ? <p>нет</p> : <p>{employee.pdp.deadline}</p>}
               </div>
             </td>
             {!isTemplate && (

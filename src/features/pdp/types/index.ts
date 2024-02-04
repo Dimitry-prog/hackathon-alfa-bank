@@ -16,5 +16,6 @@ export type UpdatePdpType = {
   body: {
     goal: string;
     deadline: string;
+    starting_date: string;
   };
 };

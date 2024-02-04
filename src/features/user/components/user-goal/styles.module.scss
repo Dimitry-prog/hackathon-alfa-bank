@@ -9,6 +9,16 @@
   gap: 24px 20px;
   border-radius: $border-radius-xl;
   background-color: $color-hover-link-brn;
+  transition: $transition-m;
+  position: relative;
+
+  &:hover {
+
+    .edit {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 
   & > div {
     @include flex-column;
@@ -25,4 +35,17 @@
       color: $color-black;
     }
   }
+}
+
+.edit {
+  width: 24px;
+  height: 24px;
+  background-image: url('/icons/edit.svg');
+  background-repeat: no-repeat;
+  transition: $transition-m;
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
 }

@@ -2,6 +2,8 @@ import classNames from 'classnames/bind';
 import styles from './styles.module.scss';
 import ProgressBar from '@/components/shared/progress-bar';
 import { PdpType } from '@/features/pdp/types';
+import { useAppDispatch } from '@/libs/store.ts';
+import { pdpActions } from '@/features/pdp/slices';
 
 const cx = classNames.bind(styles);
 
@@ -10,6 +12,8 @@ type UserGoalProps = {
 };
 
 const UserGoal = ({ pdp }: UserGoalProps) => {
+  const dispatch = useAppDispatch();
+
   return (
     <div className={cx('wrapper')}>
       <div>
@@ -19,7 +23,7 @@ const UserGoal = ({ pdp }: UserGoalProps) => {
 
       <div>
         <span>состояние ИПР</span>
-        <ProgressBar step={pdp.done} totalSteps={pdp.total} />
+        {pdp.total > 0 ? <ProgressBar step={pdp.done} totalSteps={pdp.total} /> : <p>нет задач</p>}
       </div>
 
       <div>
@@ -31,6 +35,12 @@ const UserGoal = ({ pdp }: UserGoalProps) => {
         <span>Дедлайн ИПР</span>
         <p>{pdp.deadline}</p>
       </div>
+
+      <button
+        onClick={() => dispatch(pdpActions.setStartQueryRequest(true))}
+        type="button"
+        className={cx('edit')}
+      />
     </div>
   );
 };

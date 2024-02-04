@@ -13,9 +13,10 @@ export const pdpApi = api.injectEndpoints({
     updatePdp: builder.mutation<PdpType, UpdatePdpType>({
       query: (data) => ({
         url: `/api/v1/pdp/${data.pdpId}`,
-        method: 'POST',
+        method: 'PATCH',
         body: data.body,
       }),
+      invalidatesTags: (result) => [{ type: 'Pdp', id: result?.id }, { type: 'Employees' }],
     }),
   }),
 });
