@@ -56,3 +56,9 @@
 * [Екатерина Данилова](https://github.com/DEA2022)
 * [Елена Падун](https://github.com/Milenium666)
 * [Дмитрий Мытников](https://github.com/Dimitry-prog)
+
+<details><summary>Видео демо</summary>
+
+https://github.com/Dimitry-prog/hackathon-alfa-bank/assets/104152034/73495ebc-2283-4058-808f-1b806bdbdd18
+
+</details>
