@@ -1,0 +1,17 @@
+@import "@/shared/styles/styles";
+
+.wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  padding: 0 10px;
+  border-radius: 0;
+  color: $color-text;
+
+  &_active {
+    color: $color-black;
+    border-bottom: 3px solid $color-red;
+  }
+}

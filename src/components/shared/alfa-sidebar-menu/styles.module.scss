@@ -1,0 +1,42 @@
+@import "@/shared/styles/mixins";
+@import "@/shared/styles/variables";
+
+.menu {
+  @include flex-column;
+
+  &__title {
+    @include text-typing-s-bold;
+    color: $color-text;
+    letter-spacing: 0.12em;
+    padding: 12px 0;
+  }
+
+  &__container-link {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__icons {
+    @include size-icon;
+    margin-right: 8px;
+  }
+
+  &__text {
+    @include text-btn-s;
+
+    &_gray {
+      color: $color-text;
+    }
+  }
+
+  &__text-gray {
+    @include text-btn-s;
+    color: $color-text;
+  }
+}

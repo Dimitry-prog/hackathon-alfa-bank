@@ -1,12 +1,18 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineSlices, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { api } from './api.ts';
+import { modalSlice } from '@/shared/slices/modal-slice.ts';
+import { userSlice } from '@/features/user/slices';
+import { authSlice } from '@/features/auth/slices';
+import { taskSlice } from '@/features/tasks/slices';
+import { pdpSlice } from '@/features/pdp/slices';
+import { templateSlice } from '@/features/template/slices';
+
+const rootReducer = combineSlices(api, authSlice, userSlice, templateSlice, pdpSlice, taskSlice, modalSlice);
 
 const store = configureStore({
-  reducer: {
-    [api.reducerPath]: api.reducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });

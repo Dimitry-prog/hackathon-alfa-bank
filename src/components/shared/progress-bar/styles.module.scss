@@ -1,0 +1,26 @@
+@import "@/shared/styles/styles";
+
+.wrapper {
+  @include flex-column;
+  @include flex-center;
+  gap: 26px;
+
+  &>div {
+    width: 160px;
+    height: 8px;
+    background-color: $color-divider;
+    border-radius: $border-radius-m;
+
+    &>span {
+      height: 8px;
+      display: block;
+      background-color: $color-lime;
+      border-radius: $border-radius-m;
+    }
+  }
+
+  &>p {
+    @include text-typing-s;
+    color: $color-black;
+  }
+}
