@@ -6,13 +6,15 @@ const cx = classNames.bind(styles);
 type ProgressBarProps = {
   step: number;
   totalSteps: number;
+  className?: string;
 };
 
-const ProgressBar = ({ step, totalSteps }: ProgressBarProps) => {
+const ProgressBar = ({ step, totalSteps, className }: ProgressBarProps) => {
   const percent = Math.ceil((step / totalSteps) * 100);
+  const classes = cx('wrapper', [className]);
 
   return (
-    <div className={cx('wrapper')}>
+    <div className={classes}>
       <div>
         <span style={{ width: `${percent}%` }} />
       </div>

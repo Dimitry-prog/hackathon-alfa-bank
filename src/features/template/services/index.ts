@@ -1,12 +1,8 @@
 import { api } from '@/libs/api.ts';
 import {
-  CreatorType,
-  DirectionType,
-  GradeType,
   RequestTemplateType,
   RequestUpdateTemplateType,
   SetTemplateToUsersRequestType,
-  SkillType,
   TemplateType,
 } from '@/features/template/types';
 
@@ -17,18 +13,6 @@ export const templateApi = api.injectEndpoints({
     }),
     getTemplateById: builder.query<TemplateType, string>({
       query: (templateId) => `/api/v1/template/${templateId}`,
-    }),
-    getTemplateDirections: builder.query<DirectionType[], void>({
-      query: () => `api/v1/template_properties/direction`,
-    }),
-    getTemplateGrades: builder.query<GradeType[], void>({
-      query: () => `/api/v1/template_properties/grade`,
-    }),
-    getTemplateCreators: builder.query<CreatorType[], void>({
-      query: () => `/api/v1/template_properties/creators`,
-    }),
-    getSkills: builder.query<SkillType[], void>({
-      query: () => `/api/v1/task_properties/skills/`,
     }),
     createTemplate: builder.mutation<TemplateType, RequestTemplateType>({
       query: (body) => ({
@@ -56,11 +40,7 @@ export const templateApi = api.injectEndpoints({
 
 export const {
   useGetTemplatesQuery,
-  useGetTemplateDirectionsQuery,
-  useGetTemplateGradesQuery,
-  useGetTemplateCreatorsQuery,
   useGetTemplateByIdQuery,
-  useGetSkillsQuery,
   useCreateTemplateMutation,
   useSetTemplateToUsersMutation,
 } = templateApi;

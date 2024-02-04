@@ -1,4 +1,4 @@
-import { SkillType } from '@/features/template/types';
+import { SkillType, StatusType, TypeType } from '@/features/properties/types';
 
 export type TaskType = {
   id: number;
@@ -6,8 +6,8 @@ export type TaskType = {
   starting_date: string;
   deadline: string;
   pdp_id: number;
-  type: TypesType;
-  status: StatusesType;
+  type: TypeType;
+  status: StatusType;
   description: string;
   skills: SkillType[];
   link: string;
@@ -16,27 +16,16 @@ export type TaskType = {
 };
 
 export type UpdateTaskType = {
-  id: number;
-  pdp_id: number;
-  body: {
-    title: string;
-    starting_date: string;
-    deadline: string;
-    type_id: number;
-    status_id: number;
-    description: string;
-    skills: string;
-    chief_comment: string;
-    employee_comment: string;
-  };
+  taskId: number;
+  body: Partial<
+    Omit<TaskType, 'skills'> & {
+      type_id: number;
+      status_id: number;
+      skills: string[];
+    }
+  >;
 };
 
-export type StatusesType = {
-  id: number;
-  value: string;
-};
-
-export type TypesType = {
-  id: number;
-  value: string;
+export type SetTaskToTemplateRequestType = {
+  task_id: number;
 };

@@ -460,12 +460,12 @@ export const statusTaskMock = [
 export const loginFooterLinks = [
   {
     id: '1',
-    href: '/login/help',
+    href: '/',
     label: 'Help Desk',
   },
   {
     id: '2',
-    href: '/login/help',
+    href: '/',
     label: 'Мобильное приложение',
   },
 ];
@@ -483,19 +483,44 @@ export const templateTabsMock = [
   },
 ];
 
-export const defaultValuesEmployeeFormData = {
+export const defaultValuesTaskFormData = {
   title: '',
   start_date: undefined,
   deadline: undefined,
-  type: {
+  type_id: {
     id: 1,
     value: '',
   },
-  status: {
-    id: 6,
-    value: 'Заявка',
-  },
   description: '',
   skills: [],
-  comment: '',
+  link: '',
+  employee_comment: '',
+  chief_comment: '',
 };
+
+export const durationMock = [
+  {
+    id: 1,
+    value: '1',
+  },
+  {
+    id: 2,
+    value: '2',
+  },
+  {
+    id: 3,
+    value: '3',
+  },
+  {
+    id: 4,
+    value: '4',
+  },
+  {
+    id: 5,
+    value: '5',
+  },
+  {
+    id: 6,
+    value: '6',
+  },
+];

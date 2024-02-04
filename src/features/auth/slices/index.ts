@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authApi } from '../services';
-import { userApi } from '@/features/user/services';
 
 type AuthStateType = {
   token: string | null;
@@ -13,18 +12,13 @@ const initialState: AuthStateType = {
 export const authSlice = createSlice({
   name: 'authSlice',
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.token = null;
-      localStorage.removeItem('token');
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addMatcher(authApi.endpoints.login.matchFulfilled, (state, { payload }) => {
       state.token = payload.access_token;
       localStorage.setItem('token', payload.access_token);
     });
-    builder.addMatcher(userApi.endpoints.getUser.matchRejected, (state) => {
+    builder.addMatcher(authApi.endpoints.logout.matchFulfilled, (state) => {
       state.token = null;
       localStorage.removeItem('token');
     });
