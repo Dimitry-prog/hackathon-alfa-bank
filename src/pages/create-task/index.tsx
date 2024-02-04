@@ -35,7 +35,14 @@ const CreateTaskPage = () => {
       >
         Да
       </Button>
-      <Button onClick={() => navigate(-1)}>Нет</Button>
+      <Button
+        onClick={() => {
+          onClose();
+          navigate(-1);
+        }}
+      >
+        Нет
+      </Button>
     </div>
   );
 
