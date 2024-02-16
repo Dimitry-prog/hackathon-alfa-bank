@@ -49,7 +49,7 @@
 ### Links
 
 * [link on github](https://github.com/Dimitry-prog/hackathon-alfa-bank)
-* [demo with CORS 🥲](https://hackathon-alfa-bank-qmex2t6ak-dmitrys-projects-6d1664f1.vercel.app/)
+* [demo](https://alfabankhack.ddns.net)
 
 ### TEAM
 
